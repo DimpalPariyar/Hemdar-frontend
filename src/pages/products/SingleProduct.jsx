@@ -132,7 +132,7 @@ function SingleProduct() {
                 <div className="w-full text-left my-4">
                   <button
                     onClick={() => handleAddToCart()}
-                    className="flex justify-center items-center gap-2 w-full py-3 px-4 font-bold border border-black rounded-md lg:m-0 md:px-6 "
+                    className="flex justify-center items-center gap-2 w-full py-3 px-4 font-bold border border-black rounded-md lg:m-0 md:px-6 hover:bg-red-400 hover:text-white "
                   >
                     <IoCartOutline />
                     Add to Cart
