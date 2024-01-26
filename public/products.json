@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "title": "hand bag",
+    "description": "Handmade red bag with golden chain",
+    "category": "Bag",
+    "subCategory": "handbags / capri bags",
+    "price": 63.85,
+    "image": "../src/images/Hand_Bag.png",
+    "status": "new arrivals"
+  },
+  {
+    "id": 2,
+    "title": "Yellow earing",
+    "description": "Handmade red bag with golden chain",
+    "category": "Earing",
+    "price": 130.0,
+    "image": "../src/images/earing.png",
+    "status": "new arrivals"
+  },
+  {
+    "id": 3,
+    "title": "multi bag",
+    "description": "Handmade red bag with golden chain",
+    "category": "Bag",
+    "price": 53.0,
+    "image": "../src/images/multi_bag.png",
+    "status": "new arrivals"
+  },
+  {
+    "id": 4,
+    "title": "multi color sling",
+    "description": "Handmade red bag with golden chain",
+    "category": "Bag",
+    "price": 63.85,
+    "image": "../src/images/Sling_bag.png",
+    "status": "new arrivals"
+  },
+  {
+    "id": 5,
+    "title": "white earing",
+    "description": "Handmade red bag with golden chain",
+    "category": "Earing",
+    "price": 236.0,
+    "image": "../src/images/white_earing.png",
+    "status": "new arrivals"
+  },
+  {
+    "id": 6,
+    "title": "hand bag",
+    "description": "Handmade red bag with golden chain",
+    "category": "Bag",
+    "price": 198.0,
+    "image": "../src/images/Hand_Bag.png",
+    "status": "new arrivals"
+  },
+  {
+    "id": 7,
+    "title": "Unicorn Keychain",
+    "description": "Handmade red bag with golden chain",
+    "category": "Keychain",
+    "price": 120.5,
+    "image": "../src/images/unicorn_keychain.png",
+    "status": "new arrivals"
+  },
+  {
+    "id": 8,
+    "title": "white earing",
+    "description": "Handmade red bag with golden chain",
+    "category": "Glasses",
+    "price": 160.0,
+    "image": "../src/images/white_earing.png"
+  },
+  {
+    "id": 9,
+    "title": "white earing",
+    "description": "Handmade red bag with golden chain",
+    "category": "Glasses",
+    "price": 160.0,
+    "image": "../src/images/white_earing.png"
+  },
+  {
+    "id": 10,
+    "title": "white earing",
+    "description": "Handmade red bag with golden chain",
+    "category": "Glasses",
+    "price": 160.0,
+    "image": "../src/images/white_earing.png"
+  },
+  {
+    "id": 11,
+    "title": "hand bag",
+    "description": "Handmade red bag with golden chain",
+    "category": "Bag",
+    "price": 198.0,
+    "image": "../src/images/Hand_Bag.png",
+    "status": "new arrivals"
+  },
+  {
+    "id": 12,
+    "title": "earing",
+    "description": "Handmade red bag with golden chain",
+    "category": "Keychain",
+    "price": 120.5,
+    "image": "../src/images/octopus_earing.png"
+  }
+]
