@@ -1,0 +1,327 @@
+[
+  {
+    "name": "18 to 30 years old",
+    "page": 1,
+    "points": 3
+  },
+  {
+    "name": "31 to 340 years old",
+    "page": 1,
+    "points": 5
+  },
+  {
+    "name": "41 to 50 years old",
+    "page": 1,
+    "points": 7
+  },
+  {
+    "name": "51 to 60 years old",
+    "page": 1,
+    "points": 9
+  },
+  {
+    "name": "Above 60 years old",
+    "page": 1,
+    "points": 1
+  },
+  {
+    "name": "I currently have no emergency funds",
+    "page": 2,
+    "points": 1
+  },
+  {
+    "name": "Less than 3 months",
+    "page": 2,
+    "points": 3
+  },
+  {
+    "name": "4 to 6 months",
+    "page": 2,
+    "points": 5
+  },
+  {
+    "name": "7 to 9 months",
+    "page": 2,
+    "points": 7
+  },
+  {
+    "name": "More than 9 months",
+    "page": 2,
+    "points": 9
+  },
+  {
+    "name": "0% to 10%",
+    "page": 3,
+    "points": 3
+  },
+  {
+    "name": "11% to 20%",
+    "page": 3,
+    "points": 5
+  },
+  {
+    "name": "21% to 30%",
+    "page": 3,
+    "points": 7
+  },
+  {
+    "name": "More than 30%",
+    "page": 3,
+    "points": 9
+  },
+  {
+    "name": "I currently have no income",
+    "page": 3,
+    "points": 1
+  },
+  {
+    "name": "Less than 1 year",
+    "page": 4,
+    "points": 1
+  },
+  {
+    "name": "1 to 2 years",
+    "page": 4,
+    "points": 3
+  },
+  {
+    "name": "3 to 5 years",
+    "page": 4,
+    "points": 5
+  },
+  {
+    "name": "6 to 7 years",
+    "page": 4,
+    "points": 7
+  },
+  {
+    "name": "More than 7 years",
+    "page": 4,
+    "points": 9
+  },
+  {
+    "name": "1",
+    "page": 5,
+    "points": 1
+  },
+  {
+    "name": "1, But someone who work",
+    "page": 5,
+    "points": 3
+  },
+  {
+    "name": "2",
+    "page": 5,
+    "points": 5
+  },
+  {
+    "name": "3",
+    "page": 5,
+    "points": 7
+  },
+  {
+    "name": "More than 3",
+    "page": 5,
+    "points": 9
+  },
+  {
+    "name": "Strongly agree",
+    "page": 6,
+    "points": 9
+  },
+  {
+    "name": "Agree",
+    "page": 6,
+    "points": 7
+  },
+  {
+    "name": "Neutral",
+    "page": 6,
+    "points": 5
+  },
+  {
+    "name": "Disagree",
+    "page": 6,
+    "points": 3
+  },
+  {
+    "name": "Strongly Disagree",
+    "page": 6,
+    "points": 1
+  },
+  {
+    "name": "Potential return of 6% per annum",
+    "page": 7,
+    "points": 1
+  },
+  {
+    "name": "Potential return of 7-10% per annum",
+    "page": 7,
+    "points": 3
+  },
+  {
+    "name": "Potential return of 11-13% per annum",
+    "page": 7,
+    "points": 5
+  },
+  {
+    "name": "Potential return of 14-15% per annum",
+    "page": 7,
+    "points": 7
+  },
+  {
+    "name": "Potential return of more than 15% per annum",
+    "page": 7,
+    "points": 9
+  },
+  {
+    "name": "Less than 5% per annum",
+    "page": 8,
+    "points": 1
+  },
+  {
+    "name": "5-10% per annum",
+    "page": 8,
+    "points": 3
+  },
+  {
+    "name": "10-20% per annum",
+    "page": 8,
+    "points": 5
+  },
+  {
+    "name": "20-30% per annum",
+    "page": 8,
+    "points": 7
+  },
+  {
+    "name": "Below 30% per annum",
+    "page": 8,
+    "points": 9
+  },
+  {
+    "name": "Savings and fixed deposit",
+    "page": 9,
+    "points": 1
+  },
+  {
+    "name": "Bonds",
+    "page": 9,
+    "points": 3
+  },
+  {
+    "name": "Equity and derivatives",
+    "page": 9,
+    "points": 5
+  },
+  {
+    "name": "Mutual funds",
+    "page": 9,
+    "points": 7
+  },
+  {
+    "name": "Real estate",
+    "page": 9,
+    "points": 9
+  },
+  {
+    "name": "Strongly agree",
+    "page": 10,
+    "points": 1
+  },
+  {
+    "name": "Agree",
+    "page": 10,
+    "points": 3
+  },
+  {
+    "name": "Neutral",
+    "page": 10,
+    "points": 5
+  },
+  {
+    "name": "Disagree",
+    "page": 10,
+    "points": 7
+  },
+  {
+    "name": "Strongly Disagree",
+    "page": 10,
+    "points": 9
+  },
+  {
+    "name": "Capital Preservation",
+    "page": 11,
+    "points": 1
+  },
+  {
+    "name": "Capital Appreciation",
+    "page": 11,
+    "points": 9
+  },
+  {
+    "name": "Retirement Planning",
+    "page": 11,
+    "points": 3
+  },
+  {
+    "name": "Children Education",
+    "page": 11,
+    "points": 5
+  },
+  {
+    "name": "Future Lifestyle Improvement",
+    "page": 11,
+    "points": 7
+  },
+  {
+    "name": "Under INR 2,00,000/-",
+    "page": 12,
+    "points": 1
+  },
+  {
+    "name": "INR 2,00,000/-to INR 5,00,000/-",
+    "page": 12,
+    "points": 3
+  },
+  {
+    "name": "INR 5,00,000/-to INR 10,00,000/-",
+    "page": 12,
+    "points": 5
+  },
+  {
+    "name": "INR 10,00,000/-to INR 20,00,000/-",
+    "page": 12,
+    "points": 7
+  },
+  {
+    "name": "Over INR 20,00,000/-",
+    "page": 12,
+    "points": 9
+  },
+  {
+    "name": "Less than 50%",
+    "page": 13,
+    "points": 1
+  },
+  {
+    "name": "50% to 30%",
+    "page": 13,
+    "points": 3
+  },
+  {
+    "name": "30% to 20%",
+    "page": 13,
+    "points": 5
+  },
+  {
+    "name": "Less than 20%",
+    "page": 13,
+    "points": 7
+  },
+  {
+    "name": "I have enough of surplus",
+    "page": 13,
+    "points": 9
+  }
+]

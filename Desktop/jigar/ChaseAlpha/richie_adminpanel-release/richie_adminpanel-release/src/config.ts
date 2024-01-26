@@ -24,8 +24,8 @@ export const AWS_API = {
 
 // export const BASE_URL = 'https://api.richie.club';
 // export const BASE_URL = '';
-// export const BASE_URL = 'https://api-dev.richie.club';
-export const BASE_URL = 'http://localhost:3006';
+export const BASE_URL = 'https://api-dev.richie.club';
+// export const BASE_URL = 'http://localhost:3006';
 // export const BASE_URL = 'http://192.168.0.136:3006';
 
 export const AUTH0_API = {
