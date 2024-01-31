@@ -7,7 +7,7 @@ function Cards({ item }) {
       <Link to={`/products/${item.id}/${item.title}`}>
         <img
           src={item.image}
-          className=" mx-auto aspect-[12/13] size-full hover:scale-105 transition-all duration-300"
+          className=" mx-auto aspect-[12/13] size-full hover:scale-105 transition-all duration-300 "
         />
       </Link>
       <div className="mt-4 px-4">

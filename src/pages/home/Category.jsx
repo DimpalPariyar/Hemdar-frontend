@@ -95,7 +95,7 @@ function Category() {
                 <img
                   src={item.image}
                   key={item.id}
-                  className="w-full h-full hover:scale-105 hover:opacity-[35%] transition-all duration-200"
+                  className="w-full h-full hover:scale-105 hover:opacity-[35%] transition-all duration-200 z-2"
                 />
                 {/* <div className=" absolute font-semibold uppercase text-center bg-black text-white rounded-sm">
                   <p>{item.category}</p>
