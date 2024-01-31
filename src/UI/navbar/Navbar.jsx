@@ -20,8 +20,8 @@ function Navbar() {
   }
 
   return (
-    <header className="bg-white max-w-screen-2xl xl:px-28 px-4 fixed top-0 right-0 left-0">
-      <nav className="flex justify-between items-center container md:py-4 pt-6 pb-3">
+    <header className="bg-white max-w-screen-2xl xl:px-28 px-4 fixed top-0 right-0 left-0 z-10000">
+      <nav className="flex justify-between items-center container md:py-4 pt-6 pb-3 ">
         <FaSearch className="text-black w-5 h-5 cursor-pointer hidden md:block" />
 
         <a href="/">
@@ -37,7 +37,7 @@ function Navbar() {
           </div>
         </a>
 
-        <div className="text-lg text-black sm:flex items-center gap-4 hidden">
+        <div className="text-lg text-black sm:flex items-center gap-4 hidden z-10000">
           <a href="/login" className="flex items-center gap-2">
             <FaUser />
             {/* Account */}
