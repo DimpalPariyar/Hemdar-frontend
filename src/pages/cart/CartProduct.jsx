@@ -4,31 +4,29 @@ import { Link } from "react-router-dom";
 // import { FaMinus, FaPlus } from "react-icons/fa";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { LiaRupeeSignSolid } from "react-icons/lia";
-import { useSelector } from "react-redux";
-import { getCart } from "./CartSlice";
-
-// const products = [
-//   {
-//     id: 1,
-//     title: "hand bag",
-//     category: "Bag",
-//     price: 63.85,
-//     image: "../src/images/Hand_Bag.png",
-//     status: "new arrivals",
-//   },
-//   {
-//     id: 2,
-//     title: "Yellow earing",
-//     category: "Earing",
-//     price: 130.0,
-//     image: "../src/images/earing.png",
-//     status: "new arrivals",
-//   },
-// ];
+import { useGetCartDetailsQuery } from "../../apiSlice/addToCartApiSlice";
+import axios from "axios";
 
 function CartProduct() {
-  const cart = useSelector(getCart);
-  console.log(cart);
+  async function handleRemoveFromCart(id) {
+    try {
+      const res = await axios(`http://localhost:3004/cart/${id}`);
+      console.log(res.data);
+      if (res.data) refetch();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const {
+    data: cart,
+    isSuccess,
+    isLoading,
+    isError,
+    refetch,
+  } = useGetCartDetailsQuery();
+  // const cart = useSelector(getCart);
+  console.log(cart, isError, isLoading, isSuccess);
 
   return (
     <div className="mx-5">
@@ -45,52 +43,64 @@ function CartProduct() {
 
       <div className="p-2">
         {/* {products.map((item) => ( */}
-        {cart.map((item) => (
-          <div className="flex flex-col" key={item.id}>
-            <div className="flex justify-end">
-              <button>
-                <GiCancel />
-              </button>
-            </div>
-
-            <div key={item.id} className="flex items-start gap-5 py-2 px-4">
-              <div className="size-36">
-                <Link to={"/"}>
-                  <img src={item.image} key={item.id} className=" size-36" />
-                </Link>
-              </div>
-
-              <div className="flex items-start justify-between gap-10 basis-9/12 ">
-                <div>
-                  <h1>{item.title}</h1>
-                  <p>{item.category}</p>
-                  <p>Rs.{item.price}</p>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <button>
-                    <FiMinus />
-                  </button>
-
-                  <input
-                    type="number"
-                    defaultValue={1}
-                    className=" text-center w-10 h-8"
-                  />
-
-                  <button>
-                    <FiPlus />
+        <>
+          {isSuccess &&
+            cart.items.map((item) => (
+              <div className="flex flex-col" key={item._id}>
+                <div className="flex justify-end">
+                  <button
+                    onClick={() => handleRemoveFromCart(item.productId._id)}
+                  >
+                    <GiCancel />
                   </button>
                 </div>
 
-                <div className="flex justify-center items-center">
-                  <LiaRupeeSignSolid />
-                  {item.price}
+                <div
+                  key={item._id}
+                  className="flex items-start gap-5 py-2 px-4"
+                >
+                  <div className="size-36">
+                    <Link to={"/"}>
+                      <img
+                        src={item.productId.images[0]}
+                        key={item.productId._id}
+                        className=" size-36"
+                      />
+                    </Link>
+                  </div>
+
+                  <div className="flex items-start justify-between gap-10 basis-9/12 ">
+                    <div>
+                      <h1>{item.productId.title}</h1>
+                      <p>{item.productId.category}</p>
+                      <p>Rs.{item.productId.price}</p>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button>
+                        <FiMinus />
+                      </button>
+
+                      <input
+                        type="number"
+                        defaultValue={1}
+                        className=" text-center w-10 h-8"
+                      />
+
+                      <button>
+                        <FiPlus />
+                      </button>
+                    </div>
+
+                    <div className="flex justify-center items-center">
+                      <LiaRupeeSignSolid />
+                      {item.productId.price}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        ))}
+            ))}
+        </>
       </div>
 
       <div className="flex flex-col gap-2 font-primary my-4">

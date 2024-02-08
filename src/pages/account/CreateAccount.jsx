@@ -156,7 +156,9 @@ function CreateAccount() {
             disabled={isSubmitting}
             type="submit"
             onClick={handleSubmit}
-            className="rounded-md text-center py-1 h-10 mt-8 w-full bg-black cursor-pointer text-white my-2 text-2xl"
+            className={`rounded-sm text-center py-1 h-10 mt-8 w-full bg-black cursor-pointer text-white my-2 text-2xl ${
+              isSubmitting ? "opacity-30" : ""
+            }`}
           >
             Create
           </button>

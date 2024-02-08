@@ -1,35 +1,27 @@
 import { useEffect, useState } from "react";
-import { FaFilter } from "react-icons/fa";
 import Cards from "../../components/Cards";
+import { useNavigate } from "react-router-dom";
+
+import { FaFilter } from "react-icons/fa";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { useGetAllProductsQuery } from "../../apiSlice/addProductApiSlice";
 
 function Products() {
   /*eslint-disable no-unused-vars*/
 
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortOption, setSortOption] = useState("default");
+  const navigate = useNavigate();
 
-  useEffect(
-    function () {
-      const fetchData = async () => {
-        try {
-          const res = await fetch("products.json");
-          const data = await res.json();
-          console.log(data);
-          setProducts(data);
-          setFilteredItems(data);
-        } catch (error) {
-          console.log("Error fecthing data:", error);
-        }
-      };
-      fetchData();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    },
-    [setProducts, setFilteredItems]
-  );
+  const { data: products, isSuccess } = useGetAllProductsQuery();
 
-  //   console.log(products);
+  useEffect(() => {
+    if (isSuccess) {
+      setFilteredItems(products);
+    }
+  }, [products, isSuccess]);
 
   function filterItems(category) {
     const filtered =
@@ -74,6 +66,16 @@ function Products() {
     <div className="max-w-screen-2xl container mx-auto xl:px-28 px-4 my-20">
       <h2 className="title">Products</h2>
 
+      {/* <Link to={"/addProducts"}> */}
+      <button
+        onClick={() => navigate("/addProducts")}
+        className="flex gap-1 mb-4 justify-between items-center bg-gray-500 py-1 px-2 text-white"
+      >
+        <IoIosAddCircleOutline className=" size-5" />
+        Products
+      </button>
+      {/* </Link> */}
+
       {/* product cart */}
       <div>
         <div className="flex flex-col md:flex-row flex-wrap md:justify-between items-centerspace-y-3 mb-8">
@@ -95,7 +97,7 @@ function Products() {
               id="sort"
               onChange={(e) => handleSortChange(e.target.value)}
               value={sortOption}
-              className="bg-black text-white px-2 py-1 rounded-sm"
+              className="bg-black text-white px-2 py-1"
             >
               <option value="default">Default</option>
               <option value="A-Z">A-Z</option>
@@ -107,9 +109,12 @@ function Products() {
         </div>
 
         <div className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-center justify-center gap-12">
-          {filteredItems.map((item) => (
-            <Cards item={item} key={item.id} />
-          ))}
+          {
+            // products.length > 0 &&
+            filteredItems?.map((item) => (
+              <Cards item={item} key={item._id} />
+            ))
+          }
         </div>
       </div>
     </div>

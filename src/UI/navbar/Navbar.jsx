@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FaSearch,
   FaUser,
@@ -10,8 +10,26 @@ import {
 } from "react-icons/fa";
 import SubNavbar from "./SubNavbar";
 import { useLocation } from "react-router-dom";
+import { useGetCountOfItemsInCartQuery } from "../../apiSlice/addToCartApiSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { countRefetch } from "../../reduxStoreSlice/countSlice";
 
 function Navbar() {
+  const { data: count, refetch } = useGetCountOfItemsInCartQuery();
+  console.log(count);
+
+  const dispatch = useDispatch();
+  const refetchCount = useSelector((state) => state.count);
+  console.log(refetchCount);
+
+  useEffect(() => {
+    refetch();
+  }, [refetchCount]);
+
+  useEffect(() => {
+    dispatch(countRefetch(false));
+  }, [refetchCount]);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -46,8 +64,13 @@ function Navbar() {
             <FaShoppingBag />
             {/* Shop */}
           </a>
-          <a href="/cart" className="flex items-center gap-2">
+          <a href="/cart" className="flex items-center gap-2 relative">
             <FaShoppingCart />
+            {count?.Count > 0 && (
+              <div className="bg-red-500 text-white rounded-full size-4 text-[10px] flex items-center justify-center absolute bottom-3 left-3">
+                {count?.Count}
+              </div>
+            )}
             {/* Cart */}
           </a>
           <a href="/wishlist" className="flex items-center gap-2">

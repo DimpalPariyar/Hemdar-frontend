@@ -99,7 +99,9 @@ function Login() {
             disabled={isSubmitting}
             type="submit"
             onClick={handleSubmit}
-            className="rounded-md text-center w-full py-1 text-white my-2 text-2xl cursor-pointer bg-black h-10 "
+            className={`rounded-sm text-center w-full py-1 text-white my-2 text-2xl cursor-pointer bg-black h-10 ${
+              isSubmitting ? "opacity-30" : ""
+            }`}
           >
             Log In
           </button>

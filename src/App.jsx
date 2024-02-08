@@ -10,6 +10,8 @@ import Profile from "./pages/account/Profile";
 import Checkout from "./pages/checkout/Checkout";
 import Cart from "./pages/cart/Cart";
 import Wishlist from "./pages/wishlist/Wishlist";
+import AddProducts from "./pages/admin/AddProducts";
+import UserList from "./pages/admin/UserList";
 
 const router = createBrowserRouter([
   {
@@ -19,11 +21,13 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/register", element: <CreateAccount /> },
       { path: "/products", element: <Products /> },
-      { path: "/products/:id/:title", element: <SingleProduct /> },
+      { path: "/products/:_id/:title", element: <SingleProduct /> },
       { path: "/account", element: <Profile /> },
       { path: "/checkout", element: <Checkout /> },
       { path: "/Cart", element: <Cart /> },
       { path: "/wishlist", element: <Wishlist /> },
+      { path: "/addProducts", element: <AddProducts /> },
+      { path: "/userlist", element: <UserList /> },
     ],
   },
 ]);
