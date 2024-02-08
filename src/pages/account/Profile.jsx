@@ -1,20 +1,45 @@
 import { useState } from "react";
-import { FaRegHeart, FaRegUser } from "react-icons/fa";
+// import { useSelector } from "react-redux";
+import axios from "axios";
+import { useUserDataQuery } from "../../apiSlice/authApiSlice";
+
 import { IoKeyOutline } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
 import { GrLocation } from "react-icons/gr";
+import { FaRegHeart, FaRegUser } from "react-icons/fa";
+
 import PersonalInfo from "../../components/PersonalInfo";
 import Address from "../../components/Address";
 import WishList from "../../components/WishList";
 import MyOrders from "../../components/MyOrders";
 
+axios.defaults.withCredentials = true;
 function Profile() {
   /*eslint-disable no-unused-vars*/
   const [isActive, setIsActive] = useState("tab1");
+  // const selector = useSelector((state) => state.auth);
+  const { data } = useUserDataQuery();
+  console.log(data);
+  // const sendRequest = async () => {
+  //   // const res = await axios
+  //   //   .get("http://localhost:3004/auth/userdetails", {
+  //   //     headers: { Authorization: `Bearer ${selector.accessToken}` },
+  //   //   })
+  //   //   .catch((err) => console.log(err));
+  //   const res = await axios.get("http://localhost:3004/auth/userdetails", {
+  //     withCredentials: true,
+  //   });
+  //   const data = await res.data;
+  //   console.log(data);
+  // };
 
   function activeTab(id) {
     setIsActive(id);
   }
+
+  // useEffect(() => {
+  //   sendRequest();
+  // }, [selector]);
 
   return (
     <div className=" bg-primaryBG font-primary">
