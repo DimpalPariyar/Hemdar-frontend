@@ -12,6 +12,13 @@ import Cart from "./pages/cart/Cart";
 import Wishlist from "./pages/wishlist/Wishlist";
 import AddProducts from "./pages/admin/AddProducts";
 import UserList from "./pages/admin/UserList";
+import ShippingPolicy from "./pages/staticPages/ShippingPolicy";
+import ContactUs from "./pages/staticPages/ContactUs";
+import AboutUs from "./pages/staticPages/AboutUs";
+import TermsAndConditions from "./pages/staticPages/TermsAndConditions";
+import UpdateProduct from "./pages/admin/UpdateProduct";
+import ProductsList from "./pages/admin/ProductsList";
+import AdminPage from "./pages/admin/AdminPage";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +34,14 @@ const router = createBrowserRouter([
       { path: "/Cart", element: <Cart /> },
       { path: "/wishlist", element: <Wishlist /> },
       { path: "/addProducts", element: <AddProducts /> },
+      { path: "/updateProducts/:_id", element: <UpdateProduct /> },
+      { path: "/productsList", element: <ProductsList /> },
       { path: "/userlist", element: <UserList /> },
+      { path: "/shippingpolicy", element: <ShippingPolicy /> },
+      { path: "/contactus", element: <ContactUs /> },
+      { path: "/Aboutus", element: <AboutUs /> },
+      { path: "/termsandconditions", element: <TermsAndConditions /> },
+      { path: "/admin", element: <AdminPage /> },
     ],
   },
 ]);

@@ -24,7 +24,7 @@ export const authApi = createApi({
     userData: builder.query({
       query() {
         return {
-          url: "/auth/userdetails",
+          url: "Users",
           credentials: "include",
         };
       },

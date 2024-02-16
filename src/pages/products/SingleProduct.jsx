@@ -1,22 +1,26 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { FaRegHeart, FaStar } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { addItem } from "../cart/CartSlice";
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import { IoCartOutline } from "react-icons/io5";
 import { useAddToCartMutation } from "../../apiSlice/addToCartApiSlice";
 import { useFormik } from "formik";
 import { countRefetch } from "../../reduxStoreSlice/countSlice";
+import { useGetSingleProductQuery } from "../../apiSlice/addProductApiSlice";
+import { useEffect, useState } from "react";
+import DialogBox from "../../components/DialogBox";
 
 function SingleProduct() {
   /*eslint-disable no-unused-vars*/
+  const [isOpen, setIsOpen] = useState(false);
+  function handleClose() {
+    setIsOpen(false);
+  }
 
-  const prodSize = ["S", "M", "L", "XL", "XXl"];
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-  const { _id, title } = useParams();
-  const refetchCount = useSelector((state) => state.count);
-  const [products, setProducts] = useState({
+  const [productdata, setproductdata] = useState({
     category: "",
     price: 0,
     images: [],
@@ -24,39 +28,84 @@ function SingleProduct() {
     description: "",
   });
 
-  useEffect(
-    function () {
-      async function fetchData() {
-        try {
-          const res = await fetch("/products.json");
-          const data = await res.json();
-          const product = data.filter((p) => p._id === _id);
-          console.log(product);
-          setProducts(product[0]);
-        } catch (error) {
-          console.log("Error fecthing data:", error);
-        }
-      }
-      fetchData();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    },
-    [_id]
-  );
+  // const prodSize = ["S", "M", "L", "XL", "XXl"];
+  // const prodSize = singleProduct.sizes;
 
-  const { category, price, images, status, description } = products;
-  console.log(products);
+  const { _id, title } = useParams();
+  const refetchCount = useSelector((state) => state.count);
+
+  const { data: singleProduct, isSuccess } = useGetSingleProductQuery(_id);
+  console.log(singleProduct);
+  useEffect(() => {
+    if (isSuccess) {
+      setproductdata(singleProduct);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [isSuccess]);
+
+  // const [products, setProducts] = useState({
+  //   category: "",
+  //   price: 0,
+  //   images: [],
+  //   status: "",
+  //   description: "",
+  // });
+
+  // useEffect(
+  //   function () {
+  //     async function fetchData() {
+  //       try {
+  //         const res = await fetch("/products.json");
+  //         const data = await res.json();
+  //         const product = data.filter((p) => p._id === _id);
+  //         console.log(product);
+  //         setProducts(product[0]);
+  //       } catch (error) {
+  //         console.log("Error fecthing data:", error);
+  //       }
+  //     }
+  //     fetchData();
+  //     window.scrollTo({ top: 0, behavior: "smooth" });
+  //   },
+  //   [_id]
+  // );
+
+  const {
+    images,
+    description,
+    material,
+    category,
+    status,
+    stock,
+    length,
+    breath,
+    height,
+    productweight,
+    color,
+    price,
+    discountedPrice,
+    brand,
+    shippingCharges,
+    shippingdetails,
+    isActive,
+  } = productdata;
 
   const [addToCart, { data, error, isLoading }] = useAddToCartMutation();
 
   const dispatch = useDispatch();
   function handleAddToCart(data) {
+    if (!isLoggedIn) {
+      setIsOpen(!isOpen);
+      return;
+    }
+
     const newItem = {
-      productId: products._id,
+      productId: singleProduct._id,
       quantity: data.quantity,
       size: data.size,
       sizequantity: 1,
-      color: products.color,
-      // _id: products._id,
+      color: singleProduct.color,
+      // _id: singleProduct._id,
       // images: products.images,
       // category: products.category,
       // price: products.price,
@@ -75,44 +124,82 @@ function SingleProduct() {
     onSubmit: handleAddToCart,
   });
   console.log(values);
+
+  const [activeImage, setActiveImage] = useState(0);
+
+  function activeImageTab(i) {
+    setActiveImage(i);
+  }
   return (
     <>
-      {products && (
+      <DialogBox isOpen={isOpen} onClose={handleClose}>
+        <div className="bg-white border border-black p-10 rounded-md ml-[550px] mt-[250px]">
+          <h1 className="text-center font-semibold font-primary text-xl">
+            PLEASE LOG IN
+          </h1>
+          <p className="text-center text-gray-500 font-primary mb-4">
+            Login to add items in your cart.
+          </p>
+          <Link to={"/login"}>
+            <button className=" bg-black  text-white border rounded-lg font-primary font-bold border-black p-1 w-56">
+              LOGIN
+            </button>
+          </Link>
+        </div>
+      </DialogBox>
+
+      {singleProduct && (
         <div className="mt-20 max-w-screen-2xl container mx-auto xl:px-28 px-4">
           <div className="p-3 max-w-7xl m-auto">
             <div className="mt-5">
-              <a href="/" className="text-gray-600">
+              <Link to={"/"} className="text-gray-600">
                 Home
-              </a>
-              <a href="/products" className=" text-black">
+              </Link>
+              <Link to={"/products"} className=" text-black">
                 / Shop
-              </a>
-              <a href="/products" className=" text-black">
+              </Link>
+              <Link to={"/products"} className=" text-black">
                 / {category}
-              </a>
-              <a href="/products" className="font-bold text-black">
+              </Link>
+              <Link to={"/products"} className="font-bold text-black">
                 / {title}
-              </a>
+              </Link>
             </div>
             <div className="mt-2 sm:mt-10">
-              <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-6 h-max">
-                <div className="grid grid-cols-2 gap-4">
-                  {images.map((img, i) => (
-                    <img
-                      src={`../../${img}`}
-                      className="mx-auto h-72 w-[600px]"
-                      key={i}
-                    />
-                  ))}
+              <div className="flex gap-8">
+                {/* <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-6 h-max"> */}
+                <div className="flex gap-6">
+                  <div className="flex flex-col gap-4 size-28">
+                    {images.map((img, i) => (
+                      <img
+                        src={`../../${img}`}
+                        className={`mx-auto h-72 w-[600px] ${
+                          activeImage === i ? " scale-[1.1]" : ""
+                        }`}
+                        key={i}
+                        onClick={() => activeImageTab(i)}
+                      />
+                    ))}
+                  </div>
+                  <div>
+                    {
+                      <img
+                        src={`../../${images[activeImage]}`}
+                        className="mx-auto h-96 w-80"
+                      />
+                    }
+                  </div>
                 </div>
 
-                <div>
-                  <h1 className="text-3xl font-semibold capitalize text-left my-8">
+                <div className="">
+                  <h1 className="text-3xl font-semibold capitalize text-left my-2">
                     {title}
                   </h1>
-                  <p className="mt-3 text-gray-600 text-base leading-6 text-justify sm:text-left sm:mt-4">
-                    {description}
+                  <p className="flex  flex-col text-gray-600 text-justify sm:text-left sm:mt-4">
+                    {category}
+                    <span className=" font-light text-xs">by {brand}</span>
                   </p>
+
                   <span className="my-2 text-xl text-yellow-400 flex items-center gap-1 sm:my-4">
                     <FaStar />
                     <FaStar />
@@ -121,13 +208,63 @@ function SingleProduct() {
                     <FaStar />
                   </span>
 
-                  <p className="flex items-center text-xl font-semibold sm:text-2xl">
-                    <LiaRupeeSignSolid />
-                    <span>{price}</span>
+                  <div className="flex gap-3 mt-4">
+                    {discountedPrice && (
+                      <p className="flex text-gray-400 items-center text-xl font-light line-through sm:text-2xl">
+                        <LiaRupeeSignSolid />
+                        <span className=" ">{price}</span>
+                      </p>
+                    )}
+                    <p className="flex items-center text-xl font-semibold sm:text-2xl">
+                      <LiaRupeeSignSolid />
+                      <span className=" ">
+                        {discountedPrice ? discountedPrice : price}
+                      </span>
+                    </p>
+
+                    {discountedPrice && (
+                      <p className="flex border-red-400 border rounded-full px-2 text-red-400 items-center text-sm font-semibold">
+                        {`${(100 - (discountedPrice / price) * 100).toFixed(
+                          2
+                        )}% Off`}
+                      </p>
+                    )}
+                  </div>
+
+                  <p className="border rounded-full px-2 text-green-500 border-green-500">
+                    {stock} in stock
+                  </p>
+
+                  <p className="text-gray-600 text-justify sm:text-left sm:mt-4">
+                    {description}
+                  </p>
+                  <p className="mt-1 text-gray-600 text-justify sm:text-left sm:mt-4">
+                    <span className="font-semibold text-black">Material: </span>
+                    {material}
+                  </p>
+                  <p className="mt-1 text-gray-600 text-justify sm:text-left sm:mt-4">
+                    <span className="font-semibold text-black">Size: </span>
+                    {length} (length) x {breath} (breath) x {height} (height)
+                  </p>
+                  <p className="mt-1 text-gray-600 text-justify sm:text-left sm:mt-4">
+                    <span className="font-semibold text-black">
+                      Product Weight:{" "}
+                    </span>
+                    {productweight}
+                  </p>
+                  <p className="mt-1 text-gray-600 text-justify sm:text-left sm:mt-4">
+                    <span className="font-semibold text-black">Colour: </span>
+                    {color}
+                  </p>
+                  <p className="mt-1 text-gray-600 text-justify sm:text-left sm:mt-4">
+                    <span className="font-semibold text-black">
+                      Shipping Details:{" "}
+                    </span>
+                    {shippingCharges}
                   </p>
 
                   <form onSubmit={handleSubmit}>
-                    <div className="my-2">
+                    {/* <div className="my-2">
                       <label htmlFor="selectSize" className=" my-4">
                         Select Size
                       </label>
@@ -152,7 +289,7 @@ function SingleProduct() {
                           </li>
                         ))}
                       </ul>
-                    </div>
+                    </div> */}
 
                     <div className="mt-4">
                       <div className="text-left flex flex-col gap-2 w-full">
