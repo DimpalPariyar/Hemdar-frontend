@@ -8,8 +8,10 @@ import {
   FaShoppingCart,
   FaHeart,
 } from "react-icons/fa";
+import { IoMdLogOut } from "react-icons/io";
+
 import SubNavbar from "./SubNavbar";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useGetCountOfItemsInCartQuery } from "../../apiSlice/addToCartApiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { countRefetch } from "../../reduxStoreSlice/countSlice";
@@ -20,7 +22,10 @@ function Navbar() {
 
   const dispatch = useDispatch();
   const refetchCount = useSelector((state) => state.count);
-  console.log(refetchCount);
+  // console.log(refetchCount);
+
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  // console.log(isLoggedIn);
 
   useEffect(() => {
     refetch();
@@ -42,7 +47,7 @@ function Navbar() {
       <nav className="flex justify-between items-center container md:py-4 pt-6 pb-3 ">
         <FaSearch className="text-black w-5 h-5 cursor-pointer hidden md:block" />
 
-        <a href="/">
+        <Link to={"/"}>
           {/* <img src="../src/images/Logo.jpg" className=" h-16 w-80" /> */}
           <div className="flex gap-2 justify-center items-center">
             <div>
@@ -53,30 +58,47 @@ function Navbar() {
               <p className=" font-light pl-1 text-sm">Handmade Accessories</p>
             </div>
           </div>
-        </a>
+        </Link>
 
         <div className="text-lg text-black sm:flex items-center gap-4 hidden z-10000">
-          <a href="/login" className="flex items-center gap-2">
+          <Link
+            to={`${isLoggedIn ? "/account" : "/login"}`}
+            className="flex items-center gap-2"
+          >
             <FaUser />
             {/* Account */}
-          </a>
-          <a href="/products" className="flex items-center gap-2">
+          </Link>
+
+          <Link to={"/products"} className="flex items-center gap-2">
             <FaShoppingBag />
             {/* Shop */}
-          </a>
-          <a href="/cart" className="flex items-center gap-2 relative">
-            <FaShoppingCart />
-            {count?.Count > 0 && (
-              <div className="bg-red-500 text-white rounded-full size-4 text-[10px] flex items-center justify-center absolute bottom-3 left-3">
-                {count?.Count}
-              </div>
-            )}
-            {/* Cart */}
-          </a>
-          <a href="/wishlist" className="flex items-center gap-2">
-            <FaHeart />
-            {/* Whishlist */}
-          </a>
+          </Link>
+
+          {isLoggedIn && (
+            <Link to={"/cart"} className="flex items-center gap-2 relative">
+              <FaShoppingCart />
+              {count?.Count > 0 && (
+                <div className="bg-red-500 text-white rounded-full size-4 text-[10px] flex items-center justify-center absolute bottom-3 left-3">
+                  {count?.Count}
+                </div>
+              )}
+              {/* Cart */}
+            </Link>
+          )}
+
+          {isLoggedIn && (
+            <Link to={"/wishlist"} className="flex items-center gap-2">
+              <FaHeart />
+              {/* Whishlist */}
+            </Link>
+          )}
+
+          {isLoggedIn && (
+            <Link to={"/"} className="flex items-center gap-2">
+              <IoMdLogOut />
+              {/* Logout */}
+            </Link>
+          )}
         </div>
 
         {/* navBar for sm devices */}

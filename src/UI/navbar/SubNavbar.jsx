@@ -9,6 +9,7 @@ function SubNavbar({ isMenuOpen }) {
 
   const navItems = [
     { title: "Shop", path: "/products" },
+    { title: "Sale", path: "/products" },
     { title: "New Arrivals", path: "/products" },
     { title: "Best Seller", path: "/products" },
   ];

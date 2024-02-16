@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import Cards from "../../components/Cards";
-import { useNavigate } from "react-router-dom";
 
 import { FaFilter } from "react-icons/fa";
-import { IoIosAddCircleOutline } from "react-icons/io";
+
 import { useGetAllProductsQuery } from "../../apiSlice/addProductApiSlice";
 
 function Products() {
@@ -13,7 +12,6 @@ function Products() {
   const [filteredItems, setFilteredItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortOption, setSortOption] = useState("default");
-  const navigate = useNavigate();
 
   const { data: products, isSuccess } = useGetAllProductsQuery();
 
@@ -66,14 +64,6 @@ function Products() {
     <div className="max-w-screen-2xl container mx-auto xl:px-28 px-4 my-20">
       <h2 className="title">Products</h2>
 
-      {/* <Link to={"/addProducts"}> */}
-      <button
-        onClick={() => navigate("/addProducts")}
-        className="flex gap-1 mb-4 justify-between items-center bg-gray-500 py-1 px-2 text-white"
-      >
-        <IoIosAddCircleOutline className=" size-5" />
-        Products
-      </button>
       {/* </Link> */}
 
       {/* product cart */}

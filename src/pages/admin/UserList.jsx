@@ -1,42 +1,41 @@
-function UserList() {
-  // const data = [
-  //   {
-  //     id: 1,
-  //     title: "hand bag",
-  //     description: "Handmade red bag with golden chain",
-  //     category: "Bag",
-  //     subCategory: "handbags / capri bags",
-  //     price: 63.85,
-  //     status: "new arrivals",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Yellow earing",
-  //     description: "Handmade red bag with golden chain",
-  //     category: "Earing",
-  //     price: 130.0,
-  //     status: "new arrivals",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "multi bag",
-  //     description: "Handmade red bag with golden chain",
-  //     category: "Bag",
-  //     price: 53.0,
-  //     status: "new arrivals",
-  //   },
-  // ];
+import { createColumnHelper } from "@tanstack/react-table";
+import { useUserDataQuery } from "../../apiSlice/authApiSlice";
+import ReacttanStackTable from "../../components/ReacttanStackTable";
+import { Link } from "react-router-dom";
+import { IoIosArrowRoundBack } from "react-icons/io";
 
-  // const colums = [
-  //   { Header: "ID", accessor: "id" },
-  //   { Header: "ID", accessor: "id" },
-  //   { Header: "ID", accessor: "id" },
-  //   { Header: "ID", accessor: "id" },
-  //   { Header: "ID", accessor: "id" },
-  // ];
+function UserList() {
+  const { data: userData } = useUserDataQuery();
+  console.log(userData);
+
+  const columnHelper = createColumnHelper();
+
+  const columns = [
+    columnHelper.accessor(({ username }) => username, {
+      id: "username",
+      cell: (info) => <i>{info.getValue()}</i>,
+      header: () => <span>User Name</span>,
+    }),
+    columnHelper.accessor(({ email }) => email, {
+      id: "email",
+      cell: (info) => <i>{info.getValue()}</i>,
+      header: () => <span>Email</span>,
+    }),
+    columnHelper.accessor(({ mobile }) => mobile, {
+      id: "mobile",
+      cell: (info) => <i>{info.getValue()}</i>,
+      header: () => <span>Mobile No.</span>,
+    }),
+  ];
   return (
     <div>
-      <h1>User List</h1>
+      <h1>
+        <Link to={"/admin"}>
+          <IoIosArrowRoundBack className="rounded-md border-2 size-10 p-2 mx-2" />
+        </Link>
+      </h1>
+
+      {userData && <ReacttanStackTable columns={columns} data={userData} />}
     </div>
   );
 }

@@ -14,10 +14,27 @@ export const addProductApi = createApi({
         body: data,
       }),
     }),
+    updateProduct: builder.mutation({
+      query: (data) => {
+        return {
+          url: `products/${data._id}`,
+          method: "PUT",
+          body: data,
+        };
+      },
+    }),
     getAllProducts: builder.query({
       query: () => "products",
+    }),
+    getSingleProduct: builder.query({
+      query: (productId) => `products/${productId}`,
     }),
   }),
 });
 
-export const { useAddProductMutation, useGetAllProductsQuery } = addProductApi;
+export const {
+  useAddProductMutation,
+  useGetAllProductsQuery,
+  useGetSingleProductQuery,
+  useUpdateProductMutation,
+} = addProductApi;

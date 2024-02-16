@@ -44,8 +44,8 @@ function CartProduct() {
       <div className="p-2">
         {/* {products.map((item) => ( */}
         <>
-          {isSuccess &&
-            cart.items.map((item) => (
+          {cart?.items.length > 0 &&
+            cart?.items.map((item) => (
               <div className="flex flex-col" key={item._id}>
                 <div className="flex justify-end">
                   <button
@@ -62,7 +62,7 @@ function CartProduct() {
                   <div className="size-36">
                     <Link to={"/"}>
                       <img
-                        src={item.productId.images[0]}
+                        src={item.productId?.images[0]}
                         key={item.productId._id}
                         className=" size-36"
                       />

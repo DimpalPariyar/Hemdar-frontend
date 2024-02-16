@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Fotter() {
   return (
     <div className=" flex flex-col items-center justify-center py-36">
@@ -68,12 +70,19 @@ function Fotter() {
 
       <div className="mt-4 mb-8 ">
         <ul className="flex gap-5 ">
-          <li>Contact</li>
+          <Link to={"/aboutus"}>
+            <li>About Us</li>
+          </Link>
+          <Link to={"/contactus"}>
+            <li>Contact</li>
+          </Link>
           <li>FAQ</li>
-          <li>Shipping</li>
-          <li>Returns</li>
-          <li>Terms of use</li>
-          <li>Privacy Policy</li>
+          <Link to={"/shippingpolicy"}>
+            <li>Shipping Policy</li>
+          </Link>
+          <Link to={"/termsandconditions"}>
+            <li>Terms and Conditions</li>
+          </Link>
         </ul>
       </div>
       <div>
