@@ -1,7 +1,10 @@
-import { useState } from "react";
-// import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useFormik } from "formik";
 import axios from "axios";
-import { useUserDataQuery } from "../../apiSlice/authApiSlice";
+import {
+  useSingleUserQuery,
+  useUpdateUserMutation,
+} from "../../apiSlice/authApiSlice";
 
 import { IoKeyOutline } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
@@ -16,30 +19,57 @@ import MyOrders from "../../components/MyOrders";
 axios.defaults.withCredentials = true;
 function Profile() {
   /*eslint-disable no-unused-vars*/
+  const InitialValues = {
+    username: "",
+    mobile: "",
+    email: "",
+    country: "",
+    streetaddress: "",
+    apartment: "",
+    city: "",
+    state: "",
+    pincode: "",
+  };
+
+  /*eslint-disable no-unused-vars*/
+  const { values, handleChange, isSubmitting, handleSubmit, setValues } =
+    useFormik({
+      initialValues: InitialValues,
+
+      onSubmit: updateData,
+    });
+  const { data: singleUserData, isSuccess } = useSingleUserQuery();
+  console.log(singleUserData);
+
+  const [updateUser, { data: updateUserData }] = useUpdateUserMutation();
+  console.log(updateUser, updateUserData);
+
+  function updateData(data) {
+    updateUser(data);
+  }
+
+  useEffect(() => {
+    if (singleUserData) {
+      setValues({
+        username: singleUserData.username || "",
+        mobile: singleUserData.mobile || "",
+        email: singleUserData.email || "",
+        country: singleUserData.address.country || "",
+        streetaddress: singleUserData.address.streetaddress || "",
+        apartment: singleUserData.address.apartment || "",
+        city: singleUserData.address.city || "",
+        state: singleUserData.address.state || "",
+        pincode: singleUserData.address.pincode || "",
+      });
+    }
+  }, [isSuccess]);
+
+  /*eslint-disable no-unused-vars*/
   const [isActive, setIsActive] = useState("tab1");
-  // const selector = useSelector((state) => state.auth);
-  const { data } = useUserDataQuery();
-  console.log(data);
-  // const sendRequest = async () => {
-  //   // const res = await axios
-  //   //   .get("http://localhost:3004/auth/userdetails", {
-  //   //     headers: { Authorization: `Bearer ${selector.accessToken}` },
-  //   //   })
-  //   //   .catch((err) => console.log(err));
-  //   const res = await axios.get("http://localhost:3004/auth/userdetails", {
-  //     withCredentials: true,
-  //   });
-  //   const data = await res.data;
-  //   console.log(data);
-  // };
 
   function activeTab(id) {
     setIsActive(id);
   }
-
-  // useEffect(() => {
-  //   sendRequest();
-  // }, [selector]);
 
   return (
     <div className=" bg-primaryBG font-primary">
@@ -122,8 +152,20 @@ function Profile() {
           </div>
 
           <div className="rounded-md w-full h-full bg-white py-6 px-6 mx-2 ">
-            {isActive === "tab1" && <PersonalInfoProfile />}
-            {isActive === "tab2" && <AddressProfile />}
+            {isActive === "tab1" && (
+              <PersonalInfoProfile
+                handleSubmit={handleSubmit}
+                values={values}
+                handleChange={handleChange}
+              />
+            )}
+            {isActive === "tab2" && (
+              <AddressProfile
+                values={values}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+              />
+            )}
             {isActive === "tab3" && <MyOrdersProfile />}
             {isActive === "tab4" && <WishListProfile />}
             {isActive === "tab5" && <Password />}
@@ -136,7 +178,7 @@ function Profile() {
 
 export default Profile;
 
-function PersonalInfoProfile() {
+function PersonalInfoProfile({ values, handleChange, handleSubmit }) {
   return (
     <div className="">
       <h1 className="flex gap-1 font-semibold text-lg mb-2">
@@ -148,9 +190,13 @@ function PersonalInfoProfile() {
 
       <hr />
 
-      <div className="px-2 py-4 flex flex-col gap-4 w-fit">
-        <PersonalInfo />
-        <button className="bg-blue-200 rounded-sm p-1 mx-2">
+      <div className="px-2 py-4 flex flex-col gap-4 w-96">
+        <PersonalInfo values={values} handleChange={handleChange} />
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className="bg-blue-200 rounded-sm p-1 mx-2"
+        >
           Save changes
         </button>
       </div>
@@ -158,7 +204,7 @@ function PersonalInfoProfile() {
   );
 }
 
-function AddressProfile() {
+function AddressProfile({ values, handleChange, handleSubmit }) {
   return (
     <div className="">
       <h1 className="font-semibold text-lg mb-2 flex gap-1">
@@ -169,9 +215,13 @@ function AddressProfile() {
       </h1>
       <hr />
       <hr />
-      <div className="px-2 py-4 flex flex-col gap-4 w-72">
-        <Address />
-        <button className="bg-blue-200 rounded-sm p-1 mx-2">
+      <div className="px-2 py-4 flex flex-col gap-4 w-96">
+        <Address values={values} handleChange={handleChange} />
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className="bg-blue-200 rounded-sm p-1 mx-2"
+        >
           Save changes
         </button>
       </div>
@@ -219,6 +269,38 @@ function Password() {
         Change Password
       </h1>
       <hr />
+
+      <div>
+        <p className="mt-6 mb-2">Enter old password</p>
+        <input
+          // value={values.password}
+          // onChange={handleChange}
+          id="password"
+          type="text"
+          placeholder="Old Password"
+          className="focus:outline-0 border-2 py-1 px-2 ml-1 rounded-sm"
+        />
+
+        <p className="mt-6 mb-2">Enter new password</p>
+        <input
+          // value={values.password}
+          // onChange={handleChange}
+          id="password"
+          type="text"
+          placeholder="New Password"
+          className="focus:outline-0 border-2 py-1 px-2 ml-1 rounded-sm"
+        />
+
+        <p className="mt-6 mb-2">Enter confirm password</p>
+        <input
+          // value={values.password}
+          // onChange={handleChange}
+          id="password"
+          type="text"
+          placeholder="Confirm Password"
+          className="focus:outline-0 border-2 py-1 px-2 ml-1 rounded-sm mb-5"
+        />
+      </div>
     </div>
   );
 }

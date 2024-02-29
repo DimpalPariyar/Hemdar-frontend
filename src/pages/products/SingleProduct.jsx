@@ -231,7 +231,7 @@ function SingleProduct() {
                     )}
                   </div>
 
-                  <p className="border rounded-full px-2 text-green-500 border-green-500">
+                  <p className="mt-3 w-fit border rounded-full px-2 text-green-500 border-green-500">
                     {stock} in stock
                   </p>
 

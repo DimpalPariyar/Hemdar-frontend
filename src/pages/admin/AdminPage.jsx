@@ -7,7 +7,7 @@ function AdminPage() {
 
   return (
     <div className="p-20">
-      <h1>Admin</h1>
+      <h1 className="font-bold text-2xl my-5">Admin</h1>
 
       {/* <Link to={"/addProducts"}> */}
       <button
