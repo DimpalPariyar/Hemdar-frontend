@@ -10,7 +10,7 @@ function Poster() {
             Custom products
           </h1>
           <p className="my-4 font-medium">
-            Shop and customize various crochet bags, earings, kitchens to your
+            Shop and customize various crochet bags, earings, keychains to your
             own taste here! From working with your preferred size, to working
             with your specified color theme, you can have it all!
           </p>

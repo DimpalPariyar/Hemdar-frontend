@@ -4,32 +4,25 @@ import { Link } from "react-router-dom";
 // import { FaMinus, FaPlus } from "react-icons/fa";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { LiaRupeeSignSolid } from "react-icons/lia";
-import { useGetCartDetailsQuery } from "../../apiSlice/addToCartApiSlice";
-import axios from "axios";
+import { useState } from "react";
 
-function CartProduct() {
-  async function handleRemoveFromCart(id) {
-    try {
-      const res = await axios(`http://localhost:3004/cart/${id}`);
-      console.log(res.data);
-      if (res.data) refetch();
-    } catch (error) {
-      console.log(error);
+function CartProduct({ cart, handleRemoveFromCart }) {
+  /*eslint-disable no-unused-vars*/
+  const [count, setCount] = useState(1);
+
+  function countIncrement() {
+    setCount((prev) => prev + 1);
+  }
+  function countDecrement() {
+    if (count > 1) {
+      setCount((prev) => prev - 1);
+    } else {
+      setCount(1);
     }
   }
 
-  const {
-    data: cart,
-    isSuccess,
-    isLoading,
-    isError,
-    refetch,
-  } = useGetCartDetailsQuery();
-  // const cart = useSelector(getCart);
-  console.log(cart, isError, isLoading, isSuccess);
-
   return (
-    <div className="mx-5">
+    <div className="mx-10 lg:mx-5">
       <div className="p-4">
         <Link to={"/products"}>
           <h1 className="flex gap-1 items-center">
@@ -38,14 +31,12 @@ function CartProduct() {
           </h1>
         </Link>
       </div>
-
       <hr />
-
       <div className="p-2">
         {/* {products.map((item) => ( */}
         <>
-          {cart?.items.length > 0 &&
-            cart?.items.map((item) => (
+          {cart?.Cart?.items.length > 0 &&
+            cart?.Cart?.items.map((item) => (
               <div className="flex flex-col" key={item._id}>
                 <div className="flex justify-end">
                   <button
@@ -60,7 +51,7 @@ function CartProduct() {
                   className="flex items-start gap-5 py-2 px-4"
                 >
                   <div className="size-36">
-                    <Link to={"/"}>
+                    <Link to={`/products/${item.productId._id}/${item.title}`}>
                       <img
                         src={item.productId?.images[0]}
                         key={item.productId._id}
@@ -70,31 +61,27 @@ function CartProduct() {
                   </div>
 
                   <div className="flex items-start justify-between gap-10 basis-9/12 ">
-                    <div>
+                    <div className="flex flex-col gap-2">
                       <h1>{item.productId.title}</h1>
                       <p>{item.productId.category}</p>
                       <p>Rs.{item.productId.price}</p>
                     </div>
-
                     <div className="flex items-center gap-2">
-                      <button>
+                      <button onClick={() => countDecrement()}>
                         <FiMinus />
                       </button>
 
-                      <input
-                        type="number"
-                        defaultValue={1}
-                        className=" text-center w-10 h-8"
-                      />
+                      <input value={count} type="text" className="w-7" />
 
-                      <button>
+                      <button onClick={() => countIncrement()}>
                         <FiPlus />
                       </button>
                     </div>
-
                     <div className="flex justify-center items-center">
                       <LiaRupeeSignSolid />
-                      {item.productId.price}
+                      {item.productId.discountedPrice
+                        ? item.productId.discountedPrice
+                        : item.productId.price}
                     </div>
                   </div>
                 </div>
@@ -103,14 +90,14 @@ function CartProduct() {
         </>
       </div>
 
-      <div className="flex flex-col gap-2 font-primary my-4">
+      {/* <div className="flex flex-col gap-2 font-primary my-4">
         <input
           type="text"
           placeholder="Coupon code"
           className=" border-2 border-gray-300 py-3 w-64 px-2 "
         />
         <button className=" py-3 w-64 bg-gray-200">Apply coupon</button>
-      </div>
+      </div> */}
     </div>
   );
 }

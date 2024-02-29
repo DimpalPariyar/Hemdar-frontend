@@ -20,7 +20,7 @@ function SubNavbar({ isMenuOpen }) {
 
       {/* category items */}
       <div className="pt-4">
-        <ul className="lg:flex items-center justify-between gap-40 text-black hidden">
+        <ul className="flex items-center justify-between gap-40 text-black ">
           {navItems.map(({ title, path }) => (
             <li
               onMouseEnter={() => {

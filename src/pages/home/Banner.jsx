@@ -1,4 +1,5 @@
 import { FaShoppingBag } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Banner() {
   return (
@@ -13,9 +14,11 @@ function Banner() {
             You can explore and shop many different collection of handmade bags,
             earings, keychains
           </p>
-          <button className=" bg-black hover:bg-orange-500 px-6 py-2 text-white font-semibold rounded-sm flex items-center gap-2">
-            <FaShoppingBag className="inline-flex" /> Shop Now
-          </button>
+          <Link to={"/products"}>
+            <button className=" bg-black hover:bg-orange-500 px-6 py-2 text-white font-semibold rounded-sm flex items-center gap-2">
+              <FaShoppingBag className="inline-flex" /> Shop Now
+            </button>
+          </Link>
         </div>
       </div>
     </div>

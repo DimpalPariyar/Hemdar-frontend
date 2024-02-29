@@ -1,9 +1,16 @@
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
+// import { CiLocationOn } from "react-icons/ci";
+// import { IoIosArrowDown } from "react-icons/io";
+// import Address from "../../components/Address";
+// import { useState } from "react";
 
-function CartTotal() {
+function CartTotal({ cart }) {
+  // const [changeAddress, setChangeAddress] = useState(false);
+
+  // console.log(cart);
   return (
-    <div className="m-2 p-10 flex flex-col gap-5 border border-black w-96">
+    <div className="mx-8 my-2 p-10 flex flex-col gap-5 border border-black w-[90%] lg:w-96">
       <div>
         <h1 className=" font-bold text-xl">Cart Totals</h1>
       </div>
@@ -14,26 +21,51 @@ function CartTotal() {
         <p>SUBTOTAL</p>
         <p className="flex justify-center items-center">
           <LiaRupeeSignSolid />
-          100
+          {cart.pricetotal.toFixed(2)}
+        </p>
+      </div>
+      <div className="flex justify-between items-center">
+        <p>Discount</p>
+        <p className="flex justify-center items-center">
+          <LiaRupeeSignSolid />-{cart.totalDiscount.toFixed(2)}
         </p>
       </div>
 
       <hr />
 
       <div className="flex justify-between items-center">
-        <p>Coupoun Discount</p>
+        <p>Shipping Charges</p>
         <p className="flex justify-center items-center">
           <LiaRupeeSignSolid />
-          10
+          {cart.shippingCharges.toFixed(2)}
         </p>
       </div>
+
+      {/* <div onClick={() => setChangeAddress(!changeAddress)}>
+        <h1 className="flex items-center gap-1">
+          <CiLocationOn />
+          Change Address
+          <IoIosArrowDown />
+        </h1>
+      </div> */}
+      {/* <div>
+        {changeAddress && (
+          <>
+            <Address />
+            <button className="border-2 border-black px-6 py-2 text-gray-600 text-sm ml-2">
+              Update
+            </button>
+          </>
+        )}
+      </div> */}
 
       <hr />
 
       <div className="flex justify-between items-center">
         <p>GST</p>
         <p className="flex justify-center items-center">
-          <LiaRupeeSignSolid />5
+          <LiaRupeeSignSolid />
+          {cart.gstamount.toFixed(2)}
         </p>
       </div>
 
@@ -43,7 +75,7 @@ function CartTotal() {
         <p>TOTAL</p>
         <p className="flex justify-center items-center">
           <LiaRupeeSignSolid />
-          105
+          {cart.total.toFixed(2)}
         </p>
       </div>
 

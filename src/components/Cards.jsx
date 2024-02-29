@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
-import { HiOutlineHeart } from "react-icons/hi";
+import { FaRegHeart } from "react-icons/fa";
+import { LiaRupeeSignSolid } from "react-icons/lia";
+import { FaHeart } from "react-icons/fa";
+import { useState } from "react";
 
 function Cards({ item }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const toggleLike = () => {
+    setIsLiked(!isLiked);
+  };
+
   return (
     <div key={item._id} className="shadow-sm p-2">
       <Link to={`/products/${item._id}/${item.title}`}>
@@ -13,13 +23,29 @@ function Cards({ item }) {
       <div className="mt-4 px-4">
         <div className="flex items-center justify-between">
           <h4 className="text-base font-semibold mb-2">{item.title}</h4>
-          <span className="text-xl text-gray-600">
-            <HiOutlineHeart />
+          <span
+            className="text-xl text-gray-600"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            {isHovered || isLiked ? (
+              <FaHeart onClick={toggleLike} />
+            ) : (
+              <FaRegHeart onClick={toggleLike} />
+            )}
           </span>
         </div>
-        <div className="flex justify-between">
-          <p className="text-black/50">{item.category}</p>
-          <p className="font-semibold">Rs.{item.price}</p>
+        <div className="flex gap-4">
+          {item.discountedPrice && (
+            <p className="text-black/50 flex items-center line-through">
+              <LiaRupeeSignSolid />
+              {item.price}
+            </p>
+          )}
+          <p className="font-semibold flex items-center">
+            <LiaRupeeSignSolid />
+            {item.discountedPrice ? item.discountedPrice : item.price}
+          </p>
         </div>
       </div>
     </div>

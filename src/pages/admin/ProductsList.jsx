@@ -1,5 +1,8 @@
 import { createColumnHelper } from "@tanstack/react-table";
-import { useGetAllProductsQuery } from "../../apiSlice/addProductApiSlice";
+import {
+  useDeleteProductMutation,
+  useGetAllProductsQuery,
+} from "../../apiSlice/addProductApiSlice";
 // import ReactTable from "../../components/ReactTable";
 import ReacttanStackTable from "../../components/ReacttanStackTable";
 import { MdOutlineDeleteOutline, MdOutlineEdit } from "react-icons/md";
@@ -12,6 +15,15 @@ const columnHelper = createColumnHelper();
 function ProductsList() {
   const { data: productData, refetch, isSuccess } = useGetAllProductsQuery();
   console.log(productData);
+
+  const [deleteProduct, { data: deleteProductData, isSuccess: deleteSuccess }] =
+    useDeleteProductMutation();
+  console.log(deleteProductData);
+
+  function deleteProductById(id) {
+    deleteProduct(id);
+    refetch();
+  }
 
   useEffect(() => {
     if (isSuccess) {
@@ -130,10 +142,12 @@ function ProductsList() {
       id: "_id",
       header: () => <span>Remove</span>,
       cell: ({ row }) => {
-        console.log(row);
+        console.log(row.original._id);
         return (
           <>
-            <MdOutlineDeleteOutline />
+            <button onClick={() => deleteProductById(row.original._id)}>
+              <MdOutlineDeleteOutline />
+            </button>
           </>
         );
       },

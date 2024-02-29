@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PersonalInfo from "../../components/PersonalInfo";
 import Address from "../../components/Address";
 
-function BillingDetails() {
+function BillingDetails({ values, handleChange }) {
   return (
     <div className="my-4 mx-20 p-4">
       <div className="flex justify-between">
@@ -16,9 +16,9 @@ function BillingDetails() {
         </Link>
       </div>
 
-      <div className="w-fit">
-        <PersonalInfo />
-        <Address />
+      <div className="w-full">
+        <PersonalInfo values={values} handleChange={handleChange} />
+        <Address values={values} handleChange={handleChange} />
       </div>
     </div>
   );

@@ -8,6 +8,8 @@ import {
   FaShoppingCart,
   FaHeart,
 } from "react-icons/fa";
+import { RiAdminFill } from "react-icons/ri";
+
 import { IoMdLogOut } from "react-icons/io";
 
 import SubNavbar from "./SubNavbar";
@@ -61,6 +63,11 @@ function Navbar() {
         </Link>
 
         <div className="text-lg text-black sm:flex items-center gap-4 hidden z-10000">
+          <Link to={"/admin"} className="flex items-center gap-2">
+            <RiAdminFill />
+            {/* Admin */}
+          </Link>
+
           <Link
             to={`${isLoggedIn ? "/account" : "/login"}`}
             className="flex items-center gap-2"

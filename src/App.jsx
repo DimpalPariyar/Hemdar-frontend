@@ -19,6 +19,7 @@ import TermsAndConditions from "./pages/staticPages/TermsAndConditions";
 import UpdateProduct from "./pages/admin/UpdateProduct";
 import ProductsList from "./pages/admin/ProductsList";
 import AdminPage from "./pages/admin/AdminPage";
+import PaymentSuccessfull from "./pages/payment/PaymentSuccessfull";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,7 @@ const router = createBrowserRouter([
       { path: "/Aboutus", element: <AboutUs /> },
       { path: "/termsandconditions", element: <TermsAndConditions /> },
       { path: "/admin", element: <AdminPage /> },
+      { path: "/payment-successful", element: <PaymentSuccessfull /> },
     ],
   },
 ]);
