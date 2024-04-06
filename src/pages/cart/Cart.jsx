@@ -2,6 +2,7 @@ import axios from "axios";
 import { useGetCartDetailsQuery } from "../../apiSlice/addToCartApiSlice";
 import CartProduct from "./CartProduct";
 import CartTotal from "./CartTotal";
+import { BASE_URL } from "../../../config";
 
 function Cart() {
   const {
@@ -16,7 +17,7 @@ function Cart() {
 
   async function handleRemoveFromCart(id) {
     try {
-      const res = await axios(`http://localhost:3004/cart/${id}`);
+      const res = await axios(`${BASE_URL}/cart/${id}`);
       console.log(res.data);
       if (res.data) refetch();
     } catch (error) {

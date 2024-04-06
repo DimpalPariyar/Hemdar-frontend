@@ -6,7 +6,7 @@ function Banner() {
     <div className="bg-primaryBG py-20 xl:px-28 px-4">
       <div className="py-28 flex flex-col md:flex-row-reverse justify-between items-center gap-14">
         <div className="md:w-1/2">
-          <img src="../src/images/multi-bag-1.png" />
+          <img src="images/multi-bag-1.png" />
         </div>
         <div className="md:w-1/2">
           <h1 className="text-5xl font-light mb-5">Collection</h1>

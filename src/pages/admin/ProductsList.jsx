@@ -16,7 +16,7 @@ function ProductsList() {
   const { data: productData, refetch, isSuccess } = useGetAllProductsQuery();
   console.log(productData);
 
-  const [deleteProduct, { data: deleteProductData, isSuccess: deleteSuccess }] =
+  const [deleteProduct, { data: deleteProductData }] =
     useDeleteProductMutation();
   console.log(deleteProductData);
 
