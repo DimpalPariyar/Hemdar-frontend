@@ -51,5 +51,5 @@ export default defineConfig({
       plugins: [terser()], // Apply terser plugin for minification
     },
   },
-  plugins: [react(), eslint()], // Add React and eslint plugins
+  plugins: [react()], // Add React and eslint plugins
 });
