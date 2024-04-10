@@ -83,7 +83,7 @@ function Category() {
         <div className="w-1/2 h-full aspect-auto">
           <Link to={"/"}>
             <img
-              src="../../public/images/earing.png"
+              src="images/earing.png"
               className="w-full h-[100%] hover:scale-105  transition-all duration-200"
             />
           </Link>
