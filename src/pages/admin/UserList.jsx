@@ -26,6 +26,37 @@ function UserList() {
       cell: (info) => <i>{info.getValue()}</i>,
       header: () => <span>Mobile No.</span>,
     }),
+    columnHelper.accessor(({ address }) => address?.apartment, {
+      id: "apartment",
+      cell: (info) => <i>{info.getValue()}</i>,
+      header: () => <span>Apartment</span>,
+    }),
+    columnHelper.accessor(({ address }) => address?.streetaddress, {
+      id: "streetaddress",
+      cell: (info) => <i>{info.getValue()}</i>,
+      header: () => <span>Street Address</span>,
+    }),
+
+    columnHelper.accessor(({ address }) => address?.city, {
+      id: "city",
+      cell: (info) => <i>{info.getValue()}</i>,
+      header: () => <span>City</span>,
+    }),
+    columnHelper.accessor(({ address }) => address?.state, {
+      id: "state",
+      cell: (info) => <i>{info.getValue()}</i>,
+      header: () => <span>State</span>,
+    }),
+    columnHelper.accessor(({ address }) => address?.pincode, {
+      id: "pincode",
+      cell: (info) => <i>{info.getValue()}</i>,
+      header: () => <span>Pincode</span>,
+    }),
+    columnHelper.accessor(({ address }) => address?.country, {
+      id: "country",
+      cell: (info) => <i>{info.getValue()}</i>,
+      header: () => <span>Country</span>,
+    }),
   ];
   return (
     <div>

@@ -50,10 +50,10 @@ function Navbar() {
         <FaSearch className="text-black w-5 h-5 cursor-pointer hidden md:block" />
 
         <Link to={"/"}>
-          {/* <img src="../src/images/Logo.jpg" className=" h-16 w-80" /> */}
+          {/* <img src="/images/Logo.jpg" className=" h-16 w-80" /> */}
           <div className="flex gap-2 justify-center items-center">
             <div>
-              <img src="../src/images/Logo img.jpg" className="w-12 h-12" />
+              <img src="images/Logo img.jpg" className="w-12 h-12" />
             </div>
             <div>
               <h1 className="font-medium text-2xl">Hemdar Collection</h1>
@@ -93,12 +93,10 @@ function Navbar() {
             </Link>
           )}
 
-          {isLoggedIn && (
-            <Link to={"/wishlist"} className="flex items-center gap-2">
-              <FaHeart />
-              {/* Whishlist */}
-            </Link>
-          )}
+          <Link to={"/wishlist"} className="flex items-center gap-2">
+            <FaHeart />
+            {/* Whishlist */}
+          </Link>
 
           {isLoggedIn && (
             <Link to={"/"} className="flex items-center gap-2">

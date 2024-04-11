@@ -6,7 +6,7 @@ const products = [
     title: "hand bag",
     category: "Bag",
     price: 63.85,
-    image: "../src/images/Hand_Bag.png",
+    image: "images/Hand_Bag.png",
     status: "new arrivals",
   },
   {
@@ -14,7 +14,7 @@ const products = [
     title: "Yellow earing",
     category: "Earing",
     price: 130.0,
-    image: "../src/images/earing.png",
+    image: "images/earing.png",
     status: "new arrivals",
   },
 
@@ -23,7 +23,7 @@ const products = [
     title: "multi color sling",
     category: "Bag",
     price: 63.85,
-    image: "../src/images/Sling_bag.png",
+    image: "images/Sling_bag.png",
     status: "New Arriaval",
   },
   {
@@ -31,7 +31,7 @@ const products = [
     title: "white earing",
     category: "Earing",
     price: 236.0,
-    image: "../src/images/white_earing.png",
+    image: "images/white_earing.png",
     status: "New Arriaval",
   },
   // {
@@ -39,7 +39,7 @@ const products = [
   //   title: "white earing",
   //   category: "Earing",
   //   price: 236.0,
-  //   image: "../src/images/white_earing.png",
+  //   image: "images/white_earing.png",
   //   status: "New Arriaval",
   // },
 ];
@@ -54,7 +54,7 @@ function Category() {
         <div className="w-1/2 h-full aspect-auto">
           <Link to={"/"}>
             <img
-              src="../../src/images/earing.png"
+              public="../../public/images/earing.png"
               className="w-full h-[100%] hover:scale-105 transition-all duration-200"
             />
           </Link>
@@ -64,7 +64,7 @@ function Category() {
             {products.map((item) => (
               <Link to={"/products"} key={item.id}>
                 <img
-                  src={item.image}
+                  public={item.image}
                   key={item.id}
                   className="w-full h-full hover:scale-105 hover:opacity-[35%] transition-all duration-200"
                 />
@@ -83,7 +83,7 @@ function Category() {
         <div className="w-1/2 h-full aspect-auto">
           <Link to={"/"}>
             <img
-              src="../../src/images/earing.png"
+              src="/images/earing.png"
               className="w-full h-[100%] hover:scale-105  transition-all duration-200"
             />
           </Link>
@@ -114,25 +114,25 @@ export default Category;
 {
   /* <Link to={"/"}>
               <img
-                src="../../src/images/Sling_bag.png"
+                public="../../public/images/Sling_bag.png"
                 className="w-full h-full hover:scale-105 hover:opacity-[35%] transition-all duration-200"
               />
             </Link>
             <Link to={"/"}>
               <img
-                src="../../src/images/white_earing.png"
+                public="../../public/images/white_earing.png"
                 className="w-full h-full hover:scale-105 transition-all duration-200"
               />
             </Link>
             <Link to={"/"}>
               <img
-                src="../../src/images/multi-bag-1.png"
+                public="../../public/images/multi-bag-1.png"
                 className="w-full h-full hover:scale-105 transition-all duration-200"
               />
             </Link>
             <Link to={"/"}>
               <img
-                src="../../src/images/Hand_bag.png"
+                public="../../public/images/Hand_bag.png"
                 className="w-full h-full hover:scale-105 transition-all duration-200"
               />
             </Link> */

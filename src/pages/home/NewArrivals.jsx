@@ -44,7 +44,7 @@ function NewArrivals() {
 
         <div>
           <Swiper
-            slidesPerView={1}
+            slidesPerView={4}
             spaceBetween={20}
             autoplay={{
               delay: 2500,
@@ -74,7 +74,7 @@ function NewArrivals() {
             {/* {products.filter(=>i.status)} */}
             {products.map((item) => {
               return (
-                <SwiperSlide key={item.id}>
+                <SwiperSlide key={item.id} className="mb-10">
                   <Cards item={item} key={item.id} />
                 </SwiperSlide>
               );

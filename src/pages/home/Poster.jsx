@@ -1,11 +1,11 @@
 function Poster() {
   return (
     <div>
-      <div className=" flex basis-2/4 items-center p-10 xl:px-28">
-        <div className="p-10 size-1/2">
-          <img src="./src/Images/Sling_bag.png" className="p-6 bg-white" />
+      <div className=" flex flex-col md:flex-row basis-2/4 items-center p-10 xl:px-28">
+        <div className="p-10 basis-1/2 size-full">
+          <img src="images/Sling_bag.png" className="p-6 bg-white" />
         </div>
-        <div className="p-10 text-justify size-1/2">
+        <div className="p-10 text-justify basis-1/2">
           <h1 className="font-bold text-5xl tracking-wider mb-5">
             Custom products
           </h1>
@@ -23,11 +23,11 @@ function Poster() {
 
       <hr />
 
-      <div className="bg-primaryBG flex flex-row-reverse basis-2/4 items-center p-10 xl:px-28 ">
-        <div className="p-10 size-1/2">
-          <img src="./src/Images/earing.png" className="p-6 " />
+      <div className="bg-primaryBG flex flex-col md:flex-row-reverse basis-2/4 items-center p-10 xl:px-28 ">
+        <div className="p-10 basis-1/2 size-full">
+          <img src="images/earing.png" className="p-6 " />
         </div>
-        <div className="p-10 text-justify size-1/2">
+        <div className="p-10 text-justify basis-1/2">
           <h1 className="font-bold text-5xl tracking-wider mb-5">
             READY TO SHIP
           </h1>

@@ -48,12 +48,12 @@ function Checkout() {
         username: singleUserData.username || "",
         mobile: singleUserData.mobile || "",
         email: singleUserData.email || "",
-        country: singleUserData.address.country || "",
-        streetaddress: singleUserData.address.streetaddress || "",
-        apartment: singleUserData.address.apartment || "",
-        city: singleUserData.address.city || "",
-        state: singleUserData.address.state || "",
-        pincode: singleUserData.address.pincode || "",
+        country: singleUserData?.address?.country || "",
+        streetaddress: singleUserData?.address?.streetaddress || "",
+        apartment: singleUserData?.address?.apartment || "",
+        city: singleUserData?.address?.city || "",
+        state: singleUserData?.address?.state || "",
+        pincode: singleUserData?.address?.pincode || "",
       });
     }
   }, [isSuccess]);

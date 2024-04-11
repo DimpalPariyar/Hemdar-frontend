@@ -93,6 +93,10 @@ function SingleProduct() {
   const [addToCart, { data, error, isLoading }] = useAddToCartMutation();
 
   const dispatch = useDispatch();
+
+  function handleAddToWishlist() {
+    console.log(singleProduct);
+  }
   function handleAddToCart(data) {
     if (!isLoggedIn) {
       setIsOpen(!isOpen);
@@ -305,7 +309,10 @@ function SingleProduct() {
                         />
                       </div>
                       <div className="w-full text-left my-4">
-                        <button className="flex justify-center items-center gap-2 w-full py-3 px-4 font-bold border border-black rounded-md lg:m-0 md:px-6 ">
+                        <button
+                          onClick={handleAddToWishlist}
+                          className="flex justify-center items-center gap-2 w-full py-3 px-4 font-bold border border-black rounded-md lg:m-0 md:px-6 "
+                        >
                           <FaRegHeart />
                           Wishlist
                         </button>
