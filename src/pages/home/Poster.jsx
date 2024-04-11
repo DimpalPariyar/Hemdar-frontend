@@ -3,7 +3,7 @@ function Poster() {
     <div>
       <div className=" flex flex-col md:flex-row basis-2/4 items-center p-10 xl:px-28">
         <div className="p-10 basis-1/2 size-full">
-          <img src="./src/Images/Sling_bag.png" className="p-6 bg-white" />
+          <img src="images/Sling_bag.png" className="p-6 bg-white" />
         </div>
         <div className="p-10 text-justify basis-1/2">
           <h1 className="font-bold text-5xl tracking-wider mb-5">
@@ -25,7 +25,7 @@ function Poster() {
 
       <div className="bg-primaryBG flex flex-col md:flex-row-reverse basis-2/4 items-center p-10 xl:px-28 ">
         <div className="p-10 basis-1/2 size-full">
-          <img src="./src/Images/earing.png" className="p-6 " />
+          <img src="images/earing.png" className="p-6 " />
         </div>
         <div className="p-10 text-justify basis-1/2">
           <h1 className="font-bold text-5xl tracking-wider mb-5">

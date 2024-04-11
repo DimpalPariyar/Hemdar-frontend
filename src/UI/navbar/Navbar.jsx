@@ -93,12 +93,10 @@ function Navbar() {
             </Link>
           )}
 
-          {isLoggedIn && (
-            <Link to={"/wishlist"} className="flex items-center gap-2">
-              <FaHeart />
-              {/* Whishlist */}
-            </Link>
-          )}
+          <Link to={"/wishlist"} className="flex items-center gap-2">
+            <FaHeart />
+            {/* Whishlist */}
+          </Link>
 
           {isLoggedIn && (
             <Link to={"/"} className="flex items-center gap-2">
