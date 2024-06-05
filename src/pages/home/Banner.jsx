@@ -1,26 +1,29 @@
-import { FaShoppingBag } from "react-icons/fa";
-import { Link } from "react-router-dom";
-
 function Banner() {
   return (
-    <div className="bg-primaryBG py-20 xl:px-28 px-4">
-      <div className="py-28 flex flex-col md:flex-row-reverse justify-between items-center gap-14">
-        <div className="md:w-1/2">
-          <img src="images/multi-bag-1.png" />
-        </div>
-        <div className="md:w-1/2">
-          <h1 className="text-5xl font-light mb-5">Collection</h1>
-          <p className="text-xl mb-7">
-            You can explore and shop many different collection of handmade bags,
-            earings, keychains
-          </p>
-          <Link to={"/products"}>
-            <button className=" bg-black hover:bg-orange-500 px-6 py-2 text-white font-semibold rounded-sm flex items-center gap-2">
-              <FaShoppingBag className="inline-flex" /> Shop Now
-            </button>
-          </Link>
-        </div>
-      </div>
+    <div className="flex px-20">
+      <img
+        src="/images/Banner/tshirt yarn 3.svg"
+        alt="capri bag"
+        className="relative z-50 h-[550px] w-[392px] rounded-full"
+      />
+      <img
+        src="/images/Banner/tshirt yarn 2.svg"
+        alt="flower earing"
+        className="absolute left-[375px] z-40 h-[550px] w-[392px] rounded-full hidden sm:block"
+      />
+      <img
+        src="/images/Banner/tshirt yarn 1.svg"
+        alt="sling bag"
+        className="absolute left-[725px] z-30 h-[550px] w-[392px] rounded-full hidden lg:block"
+      />
+      <img
+        src="/images/Banner/Ellipse 1177 .svg"
+        alt="round"
+        className="absolute left-[270px] sm:left-[600px] lg:left-[1000px] top-[210px] z-20 h-[390px] w-[350px] rounded-full"
+      />
+      <p className="absolute duration-500 sm:left-[760px] left-[470px] lg:left-[1130px] top-[355px] sm:top-[380px] lg:top-[380px] z-50 text-[30px] sm:text-[28px] lg:text-[32px] text-center font-primary font-[650]">
+        BEST SELLER
+      </p>
     </div>
   );
 }

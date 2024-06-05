@@ -10,6 +10,7 @@ import { countRefetch } from "../../reduxStoreSlice/countSlice";
 import { useGetSingleProductQuery } from "../../apiSlice/addProductApiSlice";
 import { useEffect, useState } from "react";
 import DialogBox from "../../components/DialogBox";
+import { useAddToWishlistMutation } from "../../apiSlice/addToWishlistApiSlice";
 
 function SingleProduct() {
   /*eslint-disable no-unused-vars*/
@@ -35,7 +36,7 @@ function SingleProduct() {
   const refetchCount = useSelector((state) => state.count);
 
   const { data: singleProduct, isSuccess } = useGetSingleProductQuery(_id);
-  console.log(singleProduct);
+  // console.log(singleProduct);
   useEffect(() => {
     if (isSuccess) {
       setproductdata(singleProduct);
@@ -94,7 +95,10 @@ function SingleProduct() {
 
   const dispatch = useDispatch();
 
+  const [addToWishlist, { data: wishlist }] = useAddToWishlistMutation();
+
   function handleAddToWishlist() {
+    addToWishlist(singleProduct._id);
     console.log(singleProduct);
   }
   function handleAddToCart(data) {

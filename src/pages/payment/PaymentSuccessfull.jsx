@@ -1,5 +1,6 @@
 import { TiTick } from "react-icons/ti";
 import { LiaRupeeSignSolid } from "react-icons/lia";
+import { Link } from "react-router-dom";
 
 function PaymentSuccessfull() {
   return (
@@ -35,9 +36,11 @@ function PaymentSuccessfull() {
         <p className="text-gray-500">Transaction Id</p>
         <p>12345678921265</p>
       </div>
-      <button className="bg-blue-500 text-white w-fit py-2 px-6 text-sm my-8">
-        Close
-      </button>
+      <Link to={"/products"}>
+        <button className="bg-blue-500 text-white w-fit py-2 px-6 text-sm my-8">
+          Close
+        </button>
+      </Link>
     </div>
   );
 }

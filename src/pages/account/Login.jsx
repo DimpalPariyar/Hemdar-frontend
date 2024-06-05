@@ -23,7 +23,7 @@ function Login() {
 
   useEffect(() => {
     if (error) {
-      const loginError = error.data.error;
+      const loginError = error?.data?.error;
       alert(loginError);
     }
   }, [error]);
@@ -33,6 +33,7 @@ function Login() {
   useEffect(() => {
     if (loginUserData) {
       dispatch(loginSuccess(loginUserData));
+      sessionStorage.setItem("isLoggedIn", "true");
     }
   }, [loginUserData]);
 
