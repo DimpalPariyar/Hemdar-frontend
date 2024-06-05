@@ -1,10 +1,11 @@
+// import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const products = [
   {
     id: 1,
     title: "hand bag",
-    category: "Bag",
+    category: "ACCESSORIES",
     price: 63.85,
     image: "images/Hand_Bag.png",
     status: "new arrivals",
@@ -12,7 +13,7 @@ const products = [
   {
     id: 2,
     title: "Yellow earing",
-    category: "Earing",
+    category: "BAGS",
     price: 130.0,
     image: "images/earing.png",
     status: "new arrivals",
@@ -21,7 +22,7 @@ const products = [
   {
     id: 3,
     title: "multi color sling",
-    category: "Bag",
+    category: "HOME DECOR ACCESSORIES",
     price: 63.85,
     image: "images/Sling_bag.png",
     status: "New Arriaval",
@@ -29,81 +30,55 @@ const products = [
   {
     id: 4,
     title: "white earing",
-    category: "Earing",
+    category: "OUTFITS",
     price: 236.0,
-    image: "images/white_earing.png",
+    image: "images/Octopus_earing.png",
     status: "New Arriaval",
   },
-  // {
-  //   id: 5,
-  //   title: "white earing",
-  //   category: "Earing",
-  //   price: 236.0,
-  //   image: "images/white_earing.png",
-  //   status: "New Arriaval",
-  // },
+  {
+    id: 5,
+    title: "white earing",
+    category: "KEYCHAINS",
+    price: 236.0,
+    image: "images/unicorn_keychain.png",
+    status: "New Arriaval",
+  },
+  {
+    id: 6,
+    title: "white earing",
+    category: "CUSTOMIZED Orders",
+    price: 236.0,
+    image: "images/IMG_bag_lilac.jpg",
+    status: "New Arriaval",
+  },
 ];
 
 function Category() {
+  // const [hoveredIndex, setHoveredIndex] = useState(null);
+
   return (
-    <div className="max-w-screen-2xl mx-auto container xl:px-28 px-4 py-28">
-      {/* <div className="mt-8 flex flex-col md:flex-row items-center gap-4">
-        <p className=" md:-rotate-90 font-semibold uppercase text-center bg-black text-white md:p-1.5 p-2 rounded-sm inline-flex">
-          EXPLORE NEW AND POPULAR STYLES
-        </p>
-        <div className="w-1/2 h-full aspect-auto">
-          <Link to={"/"}>
+    <div className="py-24 px-20">
+      <h1 className=" text-[40px] font-semibold font-inter pb-6">Categories</h1>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {products.map((item) => (
+          <div key={item.id} className={`relative`}>
             <img
-              public="../../public/images/earing.png"
-              className="w-full h-[100%] hover:scale-105 transition-all duration-200"
+              src={item.image}
+              className="size-[400px] rounded-lg brightness-50"
             />
-          </Link>
-        </div>
-        <div className="md:w-1/2">
-          <div className=" grid grid-cols-2 gap-2 relative">
-            {products.map((item) => (
-              <Link to={"/products"} key={item.id}>
-                <img
-                  public={item.image}
-                  key={item.id}
-                  className="w-full h-full hover:scale-105 hover:opacity-[35%] transition-all duration-200"
-                />
-                <div className=" absolute font-semibold uppercase text-center bg-black text-white rounded-sm">
-                  <p>{item.category}</p>
-                </div>
+
+            <div className="absolute left-[100px] top-[128px] flex flex-col items-center justify-center gap-5 font-primary w-48">
+              <p className="text-white text-[24px] text-center">
+                {item.category.toUpperCase()}
+              </p>
+              <Link to={"/products"}>
+                <button className="bg-[#000000] text-white rounded-2xl px-5 py-3">
+                  Shop Now
+                </button>
               </Link>
-            ))}
+            </div>
           </div>
-        </div>
-      </div> */}
-      <div className="mt-8 flex flex-col md:flex-row items-center gap-4">
-        <p className=" md:-rotate-90 font-semibold uppercase text-center bg-black text-white md:p-1.5 p-2 rounded-sm inline-flex">
-          EXPLORE NEW AND POPULAR STYLES
-        </p>
-        <div className="w-1/2 h-full aspect-auto">
-          <Link to={"/"}>
-            <img
-              src="/images/earing.png"
-              className="w-full h-[100%] hover:scale-105  transition-all duration-200"
-            />
-          </Link>
-        </div>
-        <div className="md:w-1/2">
-          <div className=" grid grid-cols-2 gap-2 relative">
-            {products.map((item) => (
-              <Link to={"/products"} key={item.id}>
-                <img
-                  src={item.image}
-                  key={item.id}
-                  className="w-full h-full hover:scale-105 hover:opacity-[35%] transition-all duration-200 z-2"
-                />
-                {/* <div className=" absolute font-semibold uppercase text-center bg-black text-white rounded-sm">
-                  <p>{item.category}</p>
-                </div> */}
-              </Link>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
@@ -112,28 +87,39 @@ function Category() {
 export default Category;
 
 {
-  /* <Link to={"/"}>
-              <img
-                public="../../public/images/Sling_bag.png"
-                className="w-full h-full hover:scale-105 hover:opacity-[35%] transition-all duration-200"
-              />
-            </Link>
-            <Link to={"/"}>
-              <img
-                public="../../public/images/white_earing.png"
-                className="w-full h-full hover:scale-105 transition-all duration-200"
-              />
-            </Link>
-            <Link to={"/"}>
-              <img
-                public="../../public/images/multi-bag-1.png"
-                className="w-full h-full hover:scale-105 transition-all duration-200"
-              />
-            </Link>
-            <Link to={"/"}>
-              <img
-                public="../../public/images/Hand_bag.png"
-                className="w-full h-full hover:scale-105 transition-all duration-200"
-              />
-            </Link> */
+  /* <div className="py-24 px-20">
+      <h1 className=" text-[40px] font-semibold font-inter pb-6">Categories</h1>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {products.map((item, index) => (
+          <div
+            key={item.id}
+            className={`relative`}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <img
+              src={item.image}
+              className={`size-[400px] rounded-lg ${
+                hoveredIndex === index
+                  ? " brightness-50 scale-[1.05] duration-500"
+                  : ""
+              } `}
+            />
+
+            {hoveredIndex === index && (
+              <div className="absolute left-[100px] top-[128px] flex flex-col items-center justify-center gap-5 font-primary w-48">
+                <p className="text-white text-[24px] text-center">
+                  {item.category.toUpperCase()}
+                </p>
+                <Link to={"/products"}>
+                  <button className="bg-[#000000] text-white rounded-2xl px-5 py-3">
+                    Shop Now
+                  </button>
+                </Link>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div> */
 }

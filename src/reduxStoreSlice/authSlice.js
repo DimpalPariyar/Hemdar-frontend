@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isLoggedIn: false,
+  isLoggedIn: sessionStorage.getItem("isLoggedIn") === "true" ? true : false,
   accessToken: null,
   refreshToken: null,
 };
@@ -14,18 +14,18 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
-      console.log(action, "authSlice");
     },
 
-    logout: (state) => {
+    logoutSuccess: (state) => {
       state.isLoggedIn = false;
       state.accessToken = null;
       state.refreshToken = null;
+      // sessionStorage.setItem("isLoggedIn", "false");
     },
   },
 });
 
-export const { loginSuccess, logout } = authSlice.actions;
+export const { loginSuccess, logoutSuccess } = authSlice.actions;
 export default authSlice.reducer;
 
 export const getAccessToken = (state) => state.authentication.accessToken;

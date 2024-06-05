@@ -21,13 +21,13 @@ function CartTotal({ cart }) {
         <p>SUBTOTAL</p>
         <p className="flex justify-center items-center">
           <LiaRupeeSignSolid />
-          {cart.pricetotal.toFixed(2)}
+          {cart.pricetotal?.toFixed(2)}
         </p>
       </div>
       <div className="flex justify-between items-center">
         <p>Discount</p>
         <p className="flex justify-center items-center">
-          <LiaRupeeSignSolid />-{cart.totalDiscount.toFixed(2)}
+          <LiaRupeeSignSolid />-{cart.totalDiscount?.toFixed(2)}
         </p>
       </div>
 
@@ -37,7 +37,7 @@ function CartTotal({ cart }) {
         <p>Shipping Charges</p>
         <p className="flex justify-center items-center">
           <LiaRupeeSignSolid />
-          {cart.shippingCharges.toFixed(2)}
+          {cart.shippingCharges?.toFixed(2)}
         </p>
       </div>
 
@@ -65,7 +65,7 @@ function CartTotal({ cart }) {
         <p>GST</p>
         <p className="flex justify-center items-center">
           <LiaRupeeSignSolid />
-          {cart.gstamount.toFixed(2)}
+          {cart.gstamount?.toFixed(2)}
         </p>
       </div>
 
@@ -75,7 +75,7 @@ function CartTotal({ cart }) {
         <p>TOTAL</p>
         <p className="flex justify-center items-center">
           <LiaRupeeSignSolid />
-          {cart.total.toFixed(2)}
+          {cart.total?.toFixed(2)}
         </p>
       </div>
 

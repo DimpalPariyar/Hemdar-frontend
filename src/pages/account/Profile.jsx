@@ -5,6 +5,7 @@ import {
   useSingleUserQuery,
   useUpdateUserMutation,
 } from "../../apiSlice/authApiSlice";
+import { useDispatch } from "react-redux";
 
 import { IoKeyOutline } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
@@ -15,6 +16,7 @@ import PersonalInfo from "../../components/PersonalInfo";
 import Address from "../../components/Address";
 import WishList from "../../components/WishList";
 import MyOrders from "../../components/MyOrders";
+import { logoutSuccess } from "../../reduxStoreSlice/authSlice";
 
 axios.defaults.withCredentials = true;
 function Profile() {
@@ -38,7 +40,7 @@ function Profile() {
 
       onSubmit: updateData,
     });
-  const { data: singleUserData, isSuccess } = useSingleUserQuery();
+  const { data: singleUserData, isSuccess, error } = useSingleUserQuery();
   console.log(singleUserData);
 
   const [updateUser, { data: updateUserData }] = useUpdateUserMutation();
@@ -47,6 +49,15 @@ function Profile() {
   function updateData(data) {
     updateUser(data);
   }
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (error === 401) {
+      dispatch(logoutSuccess());
+      sessionStorage.setItem("isLoggedIn", "false");
+    }
+  }, [error]);
 
   useEffect(() => {
     if (singleUserData) {
