@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { basicScheme } from "./basicSchemas";
 import { useSignupMutation } from "../../apiSlice/authApiSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 function CreateAccount() {
@@ -49,105 +49,107 @@ function CreateAccount() {
   });
 
   return (
-    <div className=" px-10 py-20 flex items-center justify-center">
-      <div className="p-4 w-96 flex flex-col items-center justify-center">
+    <div className="py-24 px-24 bg-[#F6D9DF] flex items-center justify-center font-primary">
+      <div className="w-[400px] flex flex-col items-center justify-center gap-3">
         <div>
-          <h1 className=" text-4xl font-bold mb-6 text-center">
-            Create Account
-          </h1>
+          <h1 className=" text-[25px] font-semibold text-center">REGISTER</h1>
         </div>
         <div className=" w-full"></div>
         <form onSubmit={handleSubmit} autoComplete="off">
-          <label htmlFor="username" className=" my-4">
+          {/* <label htmlFor="username" className=" my-4">
             Username
-          </label>
+          </label> */}
           <input
-            className={` w-full rounded-lg mt-1 py-1 border-2 px-2 ${
-              errors.username && touched.username ? "border-red-500" : "mb-4"
+            className={`w-[400px] rounded-lg mt-1 py-1 border-[1px] px-4 h-[40px] mb-4 bg-[#FFFFFF] text-lg text-[#828282] ${
+              errors.username && touched.username
+                ? "border-[#EC355B] mb-0"
+                : "mb-4"
             } `}
             value={values.username}
             onChange={handleChange}
             id="username"
             type="string"
-            placeholder="Enter your Username"
+            placeholder="Username*"
             onBlur={handleBlur}
           />
           {errors.username && touched.username && (
-            <p className="text-red-600 text-sm mb-4">{errors.username}</p>
+            <p className="text-[#EC355B] text-sm mb-4">{errors.username}</p>
           )}
 
-          <label htmlFor="email" className=" my-4">
+          {/* <label htmlFor="email" className=" my-4">
             Email
-          </label>
+          </label> */}
           <input
-            className={` w-full rounded-lg mt-1 py-1 border-2 px-2 ${
-              errors.email && touched.email ? "border-red-500" : "mb-4"
+            className={`w-[400px] rounded-lg mt-1 py-1 border-[1px] px-4 h-[40px] mb-4 bg-[#FFFFFF] text-lg text-[#828282] ${
+              errors.email && touched.email ? "border-[#EC355B] mb-0" : "mb-4"
             } `}
             value={values.email}
             onChange={handleChange}
             id="email"
             type="email"
-            placeholder="Enter your Email"
+            placeholder="Email Address*"
             onBlur={handleBlur}
           />
           {errors.email && touched.email && (
-            <p className="text-red-600 text-sm mb-4">{errors.email}</p>
+            <p className="text-[#EC355B] text-sm mb-4">{errors.email}</p>
           )}
 
-          <label htmlFor="mobile" className=" my-4">
+          {/* <label htmlFor="mobile" className=" my-4">
             Mobile Number
-          </label>
+          </label> */}
           <input
-            className={` w-full rounded-lg mt-1 py-1 border-2 px-2 ${
-              errors.mobile && touched.mobile ? "border-red-500" : "mb-4"
+            className={`w-[400px] rounded-lg mt-1 py-1 border-[1px] px-4 h-[40px] mb-4 bg-[#FFFFFF] text-lg text-[#828282] ${
+              errors.mobile && touched.mobile ? "border-[#EC355B] mb-0" : "mb-4"
             } `}
             value={values.mobile}
             onChange={handleChange}
             id="mobile"
             type="number"
-            placeholder="Enter your Mobile Number"
+            placeholder="Mobile Number*"
             onBlur={handleBlur}
           />
           {errors.mobile && touched.mobile && (
-            <p className="text-red-600 text-sm mb-4">{errors.mobile}</p>
+            <p className="text-[#EC355B] text-sm mb-4">{errors.mobile}</p>
           )}
 
-          <label htmlFor="password" className=" my-4">
+          {/* <label htmlFor="password" className=" my-4">
             Password{" "}
-          </label>
+          </label> */}
           <input
-            className={` w-full rounded-lg mt-1 py-1 border-2 px-2 ${
-              errors.password && touched.password ? "border-red-500" : "mb-4"
+            className={`w-[400px] rounded-lg mt-1 py-1 border-[1px] px-4 h-[40px] mb-4 bg-[#FFFFFF] text-lg text-[#828282] ${
+              errors.password && touched.password
+                ? "border-[#EC355B] mb-0"
+                : "mb-4"
             } `}
             value={values.password}
             onChange={handleChange}
             id="password"
             type="password"
-            placeholder="Enter your password"
+            placeholder="Password*"
             onBlur={handleBlur}
           />
           {errors.password && touched.password && (
-            <p className="text-red-600 text-sm mb-4">{errors.password}</p>
+            <p className="text-[#EC355B] text-sm mb-4">{errors.password}</p>
           )}
 
-          <label htmlFor="confirmPassword" className=" my-4">
+          {/* <label htmlFor="confirmPassword" className=" my-4">
             Confirm Password
-          </label>
+          </label> */}
           <input
-            className={` w-full rounded-lg mt-1 py-1 border-2 px-2 ${
+            className={`w-[400px] rounded-lg mt-1 py-1 border-[1px] px-4 h-[40px] mb-4 bg-[#FFFFFF] text-lg text-[#828282] ${
               errors.confirmPassword && touched.confirmPassword
-                ? "border-red-500"
+                ? "border-[#EC355B] mb-0"
                 : "mb-4"
             } `}
             value={values.confirmPassword}
             onChange={handleChange}
             id="confirmPassword"
             type="string"
-            placeholder="Confirm Password"
+            placeholder="Confirm Password*"
             onBlur={handleBlur}
           />
           {errors.confirmPassword && touched.confirmPassword && (
-            <p className="text-red-600 text-sm mb-4">
+            <p className="text-[#EC355B] text-sm mb-4">
               {errors.confirmPassword}
             </p>
           )}
@@ -156,19 +158,21 @@ function CreateAccount() {
             disabled={isSubmitting}
             type="submit"
             onClick={handleSubmit}
-            className={`rounded-sm text-center py-1 h-10 mt-8 w-full bg-black cursor-pointer text-white my-2 text-2xl ${
+            className={`rounded-lg text-center w-full py-1 bg-[#EC355B] text-[#FFFFFF] my-2 font-medium text-base cursor-pointer h-10 ${
               isSubmitting ? "opacity-30" : ""
             }`}
           >
-            Create
+            Register
           </button>
         </form>
 
-        <div className="w-full text-left cursor-pointer flex gap-4 justify-center">
-          <p>already a member?</p>
-          <p className="hover:underline hover:text-blue-900">
-            <a href="/login">login</a>
-          </p>
+        <div className="w-full cursor-pointer flex justify-center gap-2">
+          <div className="w-[73.5px] py-0 border-[1px] border-[#828282] my-[13.5px]"></div>
+          <span className=" text-xl text-[#828282]">Already a member?</span>
+          <h1 className="hover:underline hover:text-[#EC355B] text-xl">
+            <Link to="/login">Login</Link>
+          </h1>
+          <div className="w-[73.5px] py-0 border-[1px] border-[#828282] my-[13.5px]"></div>
         </div>
       </div>
     </div>

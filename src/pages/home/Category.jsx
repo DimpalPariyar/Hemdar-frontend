@@ -58,7 +58,9 @@ function Category() {
 
   return (
     <div className="py-24 px-20">
-      <h1 className=" text-[40px] font-semibold font-inter pb-6">Categories</h1>
+      <h1 className=" text-[40px] font-semibold font-primary pb-6">
+        Categories
+      </h1>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {products.map((item) => (
           <div key={item.id} className={`relative`}>
@@ -72,7 +74,7 @@ function Category() {
                 {item.category.toUpperCase()}
               </p>
               <Link to={"/products"}>
-                <button className="bg-[#000000] text-white rounded-2xl px-5 py-3">
+                <button className="bg-[#000000] text-white hover:scale-110 transition-all duration-300 rounded-2xl px-5 py-3">
                   Shop Now
                 </button>
               </Link>
@@ -88,7 +90,7 @@ export default Category;
 
 {
   /* <div className="py-24 px-20">
-      <h1 className=" text-[40px] font-semibold font-inter pb-6">Categories</h1>
+      <h1 className=" text-[40px] font-semibold font-primary pb-6">Categories</h1>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {products.map((item, index) => (
           <div

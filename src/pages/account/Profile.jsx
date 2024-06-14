@@ -14,7 +14,6 @@ import { FaRegHeart, FaRegUser } from "react-icons/fa";
 
 import PersonalInfo from "../../components/PersonalInfo";
 import Address from "../../components/Address";
-import WishList from "../../components/WishList";
 import MyOrders from "../../components/MyOrders";
 import { logoutSuccess } from "../../reduxStoreSlice/authSlice";
 
@@ -265,7 +264,6 @@ function WishListProfile() {
         Wishlist
       </h1>
       <hr />
-      <WishList />
     </div>
   );
 }
