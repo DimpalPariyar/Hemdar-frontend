@@ -1,5 +1,6 @@
 import Banner from "./Banner";
 import Category from "./Category";
+// import Display from "./Display";
 import Featured from "./Featured";
 import Testimonials from "./Testimonials";
 // import NewArrivals from "./NewArrivals";
@@ -10,8 +11,9 @@ function Home() {
     <div>
       <Banner />
       <Category />
-      <Featured />
       <Testimonials />
+      <Featured />
+      {/* <Display /> */}
       {/* <NewArrivals /> */}
       {/* <Poster /> */}
     </div>

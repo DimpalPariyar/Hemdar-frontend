@@ -3,7 +3,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
-
+import { FaArrowRight } from "react-icons/fa";
 import { GiCancel } from "react-icons/gi";
 import {
   useAddToWishlistMutation,
@@ -11,7 +11,10 @@ import {
 } from "../apiSlice/addToWishlistApiSlice";
 import axios from "axios";
 import { BASE_URL } from "../../config";
-import { useAddToCartMutation } from "../apiSlice/addToCartApiSlice";
+import {
+  useAddToCartMutation,
+  useGetCartDetailsQuery,
+} from "../apiSlice/addToCartApiSlice";
 
 function Cards({ item, wishlist, refetchWishlist }) {
   const [wishlistProductId, setWishlistProductId] = useState([]);
@@ -19,6 +22,32 @@ function Cards({ item, wishlist, refetchWishlist }) {
   const [addToWishlist] = useAddToWishlistMutation();
   const [addToCart] = useAddToCartMutation();
   const { data: wishlistedProducts, refetch } = useGetWishlistQuery();
+  const [refetchState, setrefetchState] = useState(false);
+
+  /*eslint-disable no-unused-vars*/
+
+  const {
+    data: cart,
+    isSuccess,
+    refetch: refetchCart,
+  } = useGetCartDetailsQuery();
+
+  const [cartProducts, setCartProducts] = useState(false);
+
+  function initCart() {
+    const cartItems = cart?.Cart.items
+      .map((product) => product.productId._id)
+      .includes(item._id);
+    setCartProducts(cartItems);
+    console.log(cartItems);
+  }
+  // console.log(cartProducts);
+
+  useEffect(() => {
+    if (isSuccess) {
+      initCart();
+    }
+  }, [refetchState, isSuccess]);
 
   useEffect(() => {
     if (wishlistedProducts) {
@@ -29,8 +58,6 @@ function Cards({ item, wishlist, refetchWishlist }) {
     }
   }, [wishlistedProducts, refetch]);
 
-  console.log(wishlistProductId);
-
   function handleAddToCart() {
     const newItem = {
       productId: item._id,
@@ -39,7 +66,10 @@ function Cards({ item, wishlist, refetchWishlist }) {
       sizequantity: 1,
       color: item.color,
     };
-    addToCart(newItem);
+    addToCart(newItem)
+      .then(() => refetchCart())
+      .then(() => initCart())
+      .then(() => setrefetchState(true));
   }
 
   async function handleRemoveFromWishlist(id) {
@@ -61,7 +91,7 @@ function Cards({ item, wishlist, refetchWishlist }) {
   }
 
   return (
-    <div key={item._id} className="shadow-sm p-2 relative">
+    <div key={item._id} className="shadow-sm relative">
       <div>
         {wishlist && (
           <p className="absolute right-4 top-4 bg-white rounded-full">
@@ -72,25 +102,24 @@ function Cards({ item, wishlist, refetchWishlist }) {
       <Link to={`/products/${item._id}/${item.title}`}>
         <img
           src={item.images[0]}
-          className={` mx-auto aspect-[12/13] size-full ${
+          className={`w-full h-[316px] ${
             !wishlist ? "hover:scale-105" : ""
           } transition-all duration-300`}
         />
       </Link>
-      <div className="mt-4 px-4">
-        <div className="flex items-center justify-between">
-          <h4 className="text-base font-semibold mb-2">{item.title}</h4>
-          {!wishlist && (
-            <span className="text-xl text-gray-600">
-              {wishlistProductId.includes(item._id) ? (
-                <FaHeart onClick={toggleWishlist} />
-              ) : (
-                <FaRegHeart onClick={toggleWishlist} />
-              )}
-            </span>
+      {!wishlist && (
+        <span className="absolute right-4 top-4 border rounded-full p-2 bg-white text-xl text-gray-600">
+          {wishlistProductId.includes(item._id) ? (
+            <FaHeart onClick={toggleWishlist} />
+          ) : (
+            <FaRegHeart onClick={toggleWishlist} />
           )}
-        </div>
-        <div className="flex gap-4">
+        </span>
+      )}
+      <div className="mt-2">
+        <h4 className="text-base font-semibold text-[#3A3845]">{item.title}</h4>
+
+        <div className="flex gap-4 mb-2">
           {item.discountedPrice && (
             <p className="text-black/50 flex items-center line-through">
               <LiaRupeeSignSolid />
@@ -102,16 +131,28 @@ function Cards({ item, wishlist, refetchWishlist }) {
             {item.discountedPrice ? item.discountedPrice : item.price}
           </p>
         </div>
+        <p className="text-[#807F86] truncate w-full">{item.description}</p>
+
+        <p className="mb-2">⭐⭐⭐⭐⭐</p>
       </div>
       <div>
-        {wishlist && (
-          <button
-            onClick={() => handleAddToCart()}
-            className="w-full p-1 border-2 rounded-md border-black my-4 font-semibold"
-          >
-            Add to cart
-          </button>
-        )}
+        <button
+          onClick={() => handleAddToCart()}
+          className="text-center w-full py-1 bg-[#EC355B] text-[#FFFFFF] my-2 font-medium text-base cursor-pointer h-10"
+        >
+          {cartProducts ? (
+            <Link to={"/cart"}>
+              <p className="flex items-center justify-center gap-2">
+                Go to cart
+                <span>
+                  <FaArrowRight />
+                </span>
+              </p>
+            </Link>
+          ) : (
+            <p>Add to cart</p>
+          )}
+        </button>
       </div>
     </div>
   );

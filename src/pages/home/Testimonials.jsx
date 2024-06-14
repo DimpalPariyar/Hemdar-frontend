@@ -7,7 +7,7 @@ function Testimonials() {
         Testimonials
       </h1>
       <div className="flex flex-col justify-center items-center pt-10 gap-2">
-        <p className="font-inter text-xl text-center w-[458px]">
+        <p className="font-primary text-xl text-center w-[458px]">
           Body text for a post. Since it’s a social app, sometimes it’s a hot
           take, and sometimes it’s a question.
         </p>

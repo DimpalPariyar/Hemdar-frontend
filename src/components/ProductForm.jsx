@@ -108,9 +108,13 @@ function ProductForm({ onSubmit, image, setImage, defaultValue }) {
                 onChange={handleChange}
               >
                 <option></option>
+                <option>Accessories</option>
                 <option>Bags</option>
                 <option>Earings</option>
+                <option>HomeDecor</option>
+                <option>Outfits</option>
                 <option>Keychains</option>
+                <option>CustomizedOrders</option>
               </select>
 
               <label htmlFor="status" className="text-gray-600">

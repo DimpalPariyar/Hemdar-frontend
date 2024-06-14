@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { FaRegUserCircle, FaRegHeart, FaTimes, FaBars } from "react-icons/fa";
 import { GrUserAdmin } from "react-icons/gr";
 import { PiHandbagSimpleBold } from "react-icons/pi";
-
 import { IoMdLogOut } from "react-icons/io";
+
+import { IoSearch } from "react-icons/io5";
 
 import SubNavbar from "./SubNavbar";
 import { Link, useNavigate } from "react-router-dom";
@@ -104,44 +105,52 @@ function Navbar() {
         <div className="font-normal font-primary gap-6 items-center justify-center pr-20 z-10000 hidden lg:flex">
           {isLoggedIn && (
             <Link to={"/admin"} className="flex flex-col items-center">
-              <GrUserAdmin className=" xl:text-xl" />
-              <p className="font-primary text-xs xl:text-sm font-medium">
+              <GrUserAdmin className="text-[#595667] xl:text-xl" />
+              <p className="font-primary text-[#595667] text-xs xl:text-sm font-medium">
                 ADMIN
               </p>
               {/* Admin */}
             </Link>
           )}
 
+          <Link to={`/`} className="flex flex-col items-center">
+            <IoSearch className="text-[#595667] xl:text-2xl" />
+            {/* <p className="font-primary text-[#595667] text-xs xl:text-sm font-medium">
+              SEARCH
+            </p> */}
+            {/* Account */}
+          </Link>
+
           <Link
             to={`${isLoggedIn ? "/account" : "/login"}`}
             className="flex flex-col items-center"
           >
-            <FaRegUserCircle className=" xl:text-xl" />
-            <p className="font-primary text-xs xl:text-sm font-medium">
+            <FaRegUserCircle className="text-[#595667] xl:text-xl" />
+            {/* <p className="font-primary text-[#595667] text-xs xl:text-sm font-medium">
               {isLoggedIn ? "ACCOUNT" : "LOGIN"}
-            </p>
+            </p> */}
             {/* Account */}
           </Link>
 
           {isLoggedIn && (
             <Link to={"/wishlist"} className="flex flex-col items-center">
-              <FaRegHeart className=" xl:text-xl" />
-              <p className=" font-primary text-xs xl:text-sm font-medium">
+              <FaRegHeart className="text-[#595667] xl:text-xl" />
+              {/* <p className="text-[#595667] font-primary text-xs xl:text-sm font-medium">
                 WISHLIST
-              </p>
+              </p> */}
               {/* Whishlist */}
             </Link>
           )}
 
           {isLoggedIn && (
             <Link to={"/cart"} className="flex flex-col items-center relative">
-              <PiHandbagSimpleBold className=" xl:text-xl" />
+              <PiHandbagSimpleBold className="text-[#595667] xl:text-xl" />
 
-              <p className=" font-primary text-xs xl:text-sm font-medium">
+              {/* <p className="text-[#595667] font-primary text-xs xl:text-sm font-medium">
                 BAG
-              </p>
+              </p> */}
               {count?.Count > 0 && (
-                <div className="bg-red-500 text-white rounded-full size-4 text-[10px] flex items-center justify-center absolute bottom-6 left-4">
+                <div className="bg-red-500 text-white rounded-full size-4 text-[10px] flex items-center justify-center absolute bottom-3 left-3">
                   {count?.Count}
                 </div>
               )}
@@ -155,10 +164,10 @@ function Navbar() {
               onClick={() => handleLogout()}
               disabled={isLoading}
             >
-              <IoMdLogOut className=" xl:text-xl" />
-              <p className=" font-primary  text-xs xl:text-sm font-medium">
+              <IoMdLogOut className="text-[#595667] xl:text-xl" />
+              {/* <p className="text-[#595667] font-primary  text-xs xl:text-sm font-medium">
                 LOGOUT
-              </p>
+              </p> */}
             </button>
           )}
         </div>

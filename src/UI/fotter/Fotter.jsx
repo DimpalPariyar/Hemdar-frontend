@@ -1,92 +1,91 @@
 import { Link } from "react-router-dom";
+import { PiWhatsappLogo } from "react-icons/pi";
+import { HiMail } from "react-icons/hi";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 function Fotter() {
   return (
-    <div className=" flex flex-col items-center justify-center py-36">
-      <div className=" text-3xl mb-6 font-semibold">
-        <h1>Join Us</h1>
+    <div className="px-20">
+      <hr />
+      <div className="pt-16 flex flex-col sm:flex-row font-primary justify-between gap-20">
+        <div className="flex flex-col gap-8">
+          <h1 className=" text-2xl">HEMDAR COLLECTION</h1>
+          <div className="flex text-gray-500 gap-5 text-2xl">
+            <Link to={"tel:+9867688624"}>
+              <PiWhatsappLogo />
+            </Link>
+            <Link to={"/"}>
+              <FaInstagram />
+            </Link>
+            <Link to={"/"}>
+              <HiMail />
+            </Link>
+            <Link to={"/"}>
+              <FaFacebook />
+            </Link>
+            <Link to={"/"}>
+              <FaYoutube />
+            </Link>
+          </div>
+        </div>
+        <div className="flex gap-16">
+          <div className="flex flex-col gap-6 pr-10 sm:pr-8 lg:pr-20">
+            <h2 className=" font-semibold">COMPANY</h2>
+            <div className="flex flex-col gap-6 font-medium text-[#454545]">
+              <Link to={"/Aboutus"}>
+                <p>About US</p>
+              </Link>
+              <Link to={"/contactus"}>
+                <p>Contact US</p>
+              </Link>
+            </div>
+          </div>
+          <div className="flex flex-col gap-6">
+            <h2 className=" font-semibold">HELP</h2>
+            <div className="flex flex-col gap-6 font-medium text-[#454545]">
+              <Link to={"/"}>
+                <p>FAQ’s</p>
+              </Link>
+              <Link to={"/shippingpolicy"}>
+                <p>Shipping Policy</p>
+              </Link>
+              <Link to={"/termsandconditions"}>
+                <p>Terms & Conditions</p>
+              </Link>
+            </div>
+          </div>
+          <div className="flex flex-col gap-6">
+            <h2 className=" font-semibold">STORE</h2>
+            <div className="flex flex-col gap-6 font-medium text-[#454545]">
+              <Link to={"/products"}>
+                <p>Accessories</p>
+              </Link>
+              <Link to={"/products"}>
+                <p>Bags</p>
+              </Link>
+              <Link to={"/products"}>
+                <p>Home Decor</p>
+              </Link>
+              <Link to={"/products"}>
+                <p>Outfits</p>
+              </Link>
+              <Link to={"/products"}>
+                <p>Keychains</p>
+              </Link>
+              <Link to={"/products"}>
+                <p>Customized orders</p>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="my-4">
-        <p className="text-center">
-          We will let you know when we have new arrivals, events and
-          promo&apos;s don&apos;t
-          <br /> worry we send them in frequently, just a friendly hi now and
-          again!
+      <div className="flex flex-col items-center pb-24">
+        <p className=" font-primary font-medium text-[#454545] text-lg">
+          @2016 Hemdar Collection
         </p>
-      </div>
-      <div className="flex mt-4 mb-12 border-b-2  border-black w-80 justify-between">
-        <input
-          type="text"
-          placeholder="Enter your email"
-          className="px-2 w-80 focus:outline-0 "
-        />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
-          />
-        </svg>
-      </div>
-      <div className="mt-6 mb-4 flex gap-4">
-        <svg
-          className="h-12 w-12 cursor-pointer rounded-full border-black border-2 p-2 "
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          {" "}
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />{" "}
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />{" "}
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-        </svg>
-
-        <svg
-          className="h-12 w-12 cursor-pointer  rounded-full border-black border-2 p-2 "
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          {" "}
-          <path stroke="none" d="M0 0h24v24H0z" />{" "}
-          <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-        </svg>
-      </div>
-
-      <div className="mt-4 mb-8 ">
-        <ul className="flex gap-5 ">
-          <Link to={"/aboutus"}>
-            <li>About Us</li>
-          </Link>
-          <Link to={"/contactus"}>
-            <li>Contact</li>
-          </Link>
-          <li>FAQ</li>
-          <Link to={"/shippingpolicy"}>
-            <li>Shipping Policy</li>
-          </Link>
-          <Link to={"/termsandconditions"}>
-            <li>Terms and Conditions</li>
-          </Link>
-        </ul>
-      </div>
-      <div>
-        <p className="text-sm">@2016 Hemdar Collection</p>
+        <p className="font-semibold font-primary text-[#454545]">
+          Made in India🩷
+        </p>
       </div>
     </div>
   );

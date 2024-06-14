@@ -33,7 +33,7 @@ function Featured() {
   ];
 
   return (
-    <div className="px-20">
+    <div className="px-20 py-24">
       <h1 className="text-center font-primary font-semibold text-[32px]">
         FEATURED
       </h1>
@@ -45,13 +45,13 @@ function Featured() {
               alt={item.title}
               className="h-[340px] w-[400px] rounded-lg"
             />
-            <p className=" font-inter font-medium text-xl w-full">
+            <p className=" font-primary font-medium text-xl w-full">
               {item.title}
             </p>
-            <p className="font-inter font-medium text-xl text-[#828282] w-full">
+            <p className="font-primary font-medium text-xl text-[#828282] w-full">
               {item.description}
             </p>
-            <p className="flex items-center font-inter font-medium text-xl w-full">
+            <p className="flex items-center font-primary font-medium text-xl w-full">
               <span>
                 <LiaRupeeSignSolid />
               </span>
