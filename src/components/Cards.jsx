@@ -23,6 +23,9 @@ function Cards({ item, wishlist, refetchWishlist }) {
   const [addToCart] = useAddToCartMutation();
   const { data: wishlistedProducts, refetch } = useGetWishlistQuery();
   const [refetchState, setrefetchState] = useState(false);
+
+  /*eslint-disable no-unused-vars*/
+
   const {
     data: cart,
     isSuccess,
